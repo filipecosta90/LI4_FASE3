@@ -16,21 +16,20 @@
         var lat;
         var long;
 
-        if (document.getElementById('latitude').value != "") {
+        if (document.getElementById('latitude') != null) {
             lat = document.getElementById('latitude').value;
         }
         else {
             lat = 41.559634;
         }
 
-        if (document.getElementById('longitude').value != "") {
+        if (document.getElementById('longitude') != null) {
             long = document.getElementById('longitude').value;
         }
         else {
             long = -8.397293;
         }
-
-
+        
     var line = null;
     var lineSelected = null;
     function mapa() {
