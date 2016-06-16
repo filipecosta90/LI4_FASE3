@@ -3,12 +3,120 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Refugee Assist - LI IV</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+        <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7lGfBvhst2b6mIwWMH6g7j7HKLVDrGQw&sensor=false"></script>
+    <script type="text/javascript">
+        var map;
+        var marker;
+        var lat;
+        var long;
 
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=abcdefg" type="text/javascript"></script>
+        if (document.getElementById('latitude').value != "") {
+            lat = document.getElementById('latitude').value;
+        }
+        else {
+            lat = 41.559634;
+        }
+
+        if (document.getElementById('longitude').value != "") {
+            long = document.getElementById('longitude').value;
+        }
+        else {
+            long = -8.397293;
+        }
+
+
+    var line = null;
+    var lineSelected = null;
+    function mapa() {
+
+        var opts = {
+            center: new google.maps.LatLng(lat, long),
+            zoom: 6, 'mapTypeId': google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true,
+            draggable: true,
+            zoomControl: true,
+            scrollwheel: true,
+            disableDoubleClickZoom: true
+        }
+       
+        map = new google.maps.Map(document.getElementById('map-li4-1'), opts);
+
+        marker = new google.maps.Marker({
+            position: event.latLng,
+            map: map
+        })
+
+        function placeMarker(localizacao) {
+            marker.setPosition(localizacao);
+        }
+
+        // Define linha vermelha que representa longitude inicial - quando rato passa por cima do mapa
+        google.maps.event.addListener(map, 'mousemove', function (event) {
+            lat = event.latLng.lat();
+            long = event.latLng.lng();
+            desenhaLinha(lat,long);
+        });
+
+        // Posiciona linha vermelha, quando o utilizador define manualmente a longitude inicial (através da área de texto)
+        $("input#longitude").on("change blur", function () {
+            placeMarker(event.latLng);
+        });
+
+        // Posiciona linha vermelha, quando o utilizador define manualmente a longitude inicial (através da área de texto)
+        $("input#latitude").on("change blur", function () {
+            placeMarker(event.latLng);
+        });
+
+        setInterval(blinkLinhaSelected, 700);
+    }
+
+    function desenhaLinha(lat,long) {
+        if (line != null) line.setMap(null);
+        var lineCoords = [new google.maps.LatLng(lat, long), new google.maps.LatLng(lat, long)];
+        line = new google.maps.Polyline({
+            path: lineCoords, strokeColor: '#FF0000',
+            strokeOpacity: 0.5, strokeWeight: 2
+        });
+        line.setMap(map);
+        google.maps.event.addListener(line, 'click', function (event) {
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = long;
+            marker.setPosition(event.latLng);
+
+
+            //desenhaLinhaSelected(long);
+        })
+    }
+
+    function desenhaLinhaSelected(lat,long) {
+        if (lineSelected != null) lineSelected.setMap(null);
+        var lineCoords = [new google.maps.LatLng(lat, long), new google.maps.LatLng(lat, long)];
+        lineSelected = new google.maps.Polyline({
+            path: lineCoords, strokeColor: '#004373',
+            strokeOpacity: 0.5, strokeWeight: 2
+        });
+        lineSelected.setMap(map);
+    }
+
+    function blinkLinhaSelected() {
+        if (lineSelected != null) {
+            if (lineSelected.getMap() == null) {
+                lineSelected.setMap(map);
+            } else {
+                lineSelected.setMap(null);
+            }
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', mapa);
+
+    </script>
 
 </head>
 <body>
@@ -36,7 +144,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Laboratórios de Informática IV</p>
         </footer>
     </div>
 
