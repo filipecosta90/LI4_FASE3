@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="baf1f17bdf584590a71c87a3487a08bb" Name="Diagram1">
+        <EntityTypeShape EntityType="li4_back_endModel.Escala" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.Estatistica" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.Evento" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.LocalInteresse" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.Localizacao" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.Refugiado" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.RegistoCampo" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.Utilizador" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="li4_back_endModel.FK_Estatistica_Escala" ManuallyRouted="false" />
+        <AssociationConnector Association="li4_back_endModel.FK_Estatistica_Utilizador" ManuallyRouted="false" />
+        <AssociationConnector Association="li4_back_endModel.FK_Evento_Utilizador" ManuallyRouted="false" />
+        <AssociationConnector Association="li4_back_endModel.FK_Refugiado_Utilizador" ManuallyRouted="false" />
+        <AssociationConnector Association="li4_back_endModel.local_interesse" ManuallyRouted="false" />
+        <AssociationConnector Association="li4_back_endModel.LocalInteresse_RegistoCampo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="li4_back_endModelStoreContainer" CdmEntityContainer="li4_back_end_entities">
+    <EntitySetMapping Name="Escalas">
+      <EntityTypeMapping TypeName="li4_back_endModel.Escala">
+        <MappingFragment StoreEntitySet="Escala">
+          <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+          <ScalarProperty Name="perigo" ColumnName="perigo" />
+          <ScalarProperty Name="confianca" ColumnName="confianca" />
+          <ScalarProperty Name="saude" ColumnName="saude" />
+          <ScalarProperty Name="autonomia" ColumnName="autonomia" />
+          <ScalarProperty Name="terceiros" ColumnName="terceiros" />
+          <ScalarProperty Name="fome" ColumnName="fome" />
+          <ScalarProperty Name="esforco" ColumnName="esforco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estatisticas">
+      <EntityTypeMapping TypeName="li4_back_endModel.Estatistica">
+        <MappingFragment StoreEntitySet="Estatistica">
+          <ScalarProperty Name="id_estatistica" ColumnName="id_estatistica" />
+          <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+          <ScalarProperty Name="intervencao_imediata" ColumnName="intervencao_imediata" />
+          <ScalarProperty Name="info_adicional" ColumnName="info_adicional" />
+          <ScalarProperty Name="localizacao_latitude" ColumnName="localizacao_latitude" />
+          <ScalarProperty Name="localizacao_longitude" ColumnName="localizacao_longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eventoes">
+      <EntityTypeMapping TypeName="li4_back_endModel.Evento">
+        <MappingFragment StoreEntitySet="Evento">
+          <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+          <ScalarProperty Name="gravidade" ColumnName="gravidade" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="resumo_textual" ColumnName="resumo_textual" />
+          <ScalarProperty Name="localizacao_latitude" ColumnName="localizacao_latitude" />
+          <ScalarProperty Name="localizacao_longitude" ColumnName="localizacao_longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalInteresses">
+      <EntityTypeMapping TypeName="li4_back_endModel.LocalInteresse">
+        <MappingFragment StoreEntitySet="LocalInteresse">
+          <ScalarProperty Name="id_local_interesse" ColumnName="id_local_interesse" />
+          <ScalarProperty Name="data_registo" ColumnName="data_registo" />
+          <ScalarProperty Name="data_intervencao" ColumnName="data_intervencao" />
+          <ScalarProperty Name="inf_adicional" ColumnName="inf_adicional" />
+          <ScalarProperty Name="numero_voluntarios" ColumnName="numero_voluntarios" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Localizacaos">
+      <EntityTypeMapping TypeName="li4_back_endModel.Localizacao">
+        <MappingFragment StoreEntitySet="Localizacao">
+          <ScalarProperty Name="id_localizacao" ColumnName="id_localizacao" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Refugiadoes">
+      <EntityTypeMapping TypeName="li4_back_endModel.Refugiado">
+        <MappingFragment StoreEntitySet="Refugiado">
+          <ScalarProperty Name="id_refugiado" ColumnName="id_refugiado" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+          <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+          <ScalarProperty Name="local_registo_latitude" ColumnName="local_registo_latitude" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="info_adicional" ColumnName="info_adicional" />
+          <ScalarProperty Name="data_registo" ColumnName="data_registo" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="paradeiro_conhecido" ColumnName="paradeiro_conhecido" />
+          <ScalarProperty Name="msg_voz" ColumnName="msg_voz" />
+          <ScalarProperty Name="local_registo_longitude" ColumnName="local_registo_longitude" />
+          <ScalarProperty Name="localizacao_actual_latitude" ColumnName="localizacao_actual_latitude" />
+          <ScalarProperty Name="localizacao_actual_longitude" ColumnName="localizacao_actual_longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistoCampoes">
+      <EntityTypeMapping TypeName="li4_back_endModel.RegistoCampo">
+        <MappingFragment StoreEntitySet="RegistoCampo">
+          <ScalarProperty Name="idRegistoCampo" ColumnName="idRegistoCampo" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilizadors">
+      <EntityTypeMapping TypeName="li4_back_endModel.Utilizador">
+        <MappingFragment StoreEntitySet="Utilizador">
+          <ScalarProperty Name="id_utlizador" ColumnName="id_utlizador" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="RegistoCampo_idRegistoCampo" ColumnName="RegistoCampo_idRegistoCampo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="local_interesse" TypeName="li4_back_endModel.local_interesse" StoreEntitySet="local_interesse">
+      <EndProperty Name="LocalInteresse">
+        <ScalarProperty Name="id_local_interesse" ColumnName="localInteresse_idLocalInteresse" />
+      </EndProperty>
+      <EndProperty Name="Utilizador">
+        <ScalarProperty Name="id_utlizador" ColumnName="utilizador" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocalInteresse_RegistoCampo" TypeName="li4_back_endModel.LocalInteresse_RegistoCampo" StoreEntitySet="LocalInteresse_RegistoCampo">
+      <EndProperty Name="LocalInteresse">
+        <ScalarProperty Name="id_local_interesse" ColumnName="LocalInteresse_idLocalInteresse" />
+      </EndProperty>
+      <EndProperty Name="RegistoCampo">
+        <ScalarProperty Name="idRegistoCampo" ColumnName="RegistoCampo_idRegistoCampo" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

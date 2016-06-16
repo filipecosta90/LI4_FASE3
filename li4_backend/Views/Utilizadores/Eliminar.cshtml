@@ -1,0 +1,50 @@
+﻿@model li4_backend.Models.Utilizador
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>De certeza que pretende eliminar este Utilizador?</h3>
+<div>
+    <h4>Utilizador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_utlizador )
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_utlizador )
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para Listar", "Listar")
+        </div>
+    }
+</div>

@@ -1,0 +1,81 @@
+﻿@model li4_backend.Models.LocalInteresse
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Tem a certeza que pretende eliminar?</h3>
+<div>
+    <h4>LocalInteresse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_local_interesse )
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_local_interesse )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_registo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_registo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_intervencao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_intervencao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inf_adicional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inf_adicional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_voluntarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_voluntarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longitude)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar à Listagen", "Index")
+        </div>
+    }
+</div>

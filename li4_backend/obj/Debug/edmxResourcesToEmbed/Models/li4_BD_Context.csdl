@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="li4_back_endModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Escala">
+    <Key>
+      <PropertyRef Name="id_escala" />
+    </Key>
+    <Property Name="id_escala" Type="Int32" Nullable="false" />
+    <Property Name="perigo" Type="Int32" Nullable="false" />
+    <Property Name="confianca" Type="Int32" Nullable="false" />
+    <Property Name="saude" Type="Int32" Nullable="false" />
+    <Property Name="autonomia" Type="Int32" Nullable="false" />
+    <Property Name="terceiros" Type="Int32" Nullable="false" />
+    <Property Name="fome" Type="Int32" />
+    <Property Name="esforco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Estatisticas" Relationship="Self.FK_Estatistica_Escala" FromRole="Escala" ToRole="Estatistica" />
+  </EntityType>
+  <EntityType Name="Estatistica">
+    <Key>
+      <PropertyRef Name="id_estatistica" />
+    </Key>
+    <Property Name="id_estatistica" Type="Int32" Nullable="false" />
+    <Property Name="utilizador" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id_escala" Type="Int32" Nullable="false" />
+    <Property Name="intervencao_imediata" Type="Byte" Nullable="false" />
+    <Property Name="info_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localizacao_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="localizacao_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Escala" Relationship="Self.FK_Estatistica_Escala" FromRole="Estatistica" ToRole="Escala" />
+    <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Estatistica_Utilizador" FromRole="Estatistica" ToRole="Utilizador" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="id_evento" />
+    </Key>
+    <Property Name="id_evento" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="utilizador" Type="Int32" Nullable="false" />
+    <Property Name="gravidade" Type="Int32" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="resumo_textual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localizacao_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localizacao_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Evento_Utilizador" FromRole="Evento" ToRole="Utilizador" />
+  </EntityType>
+  <EntityType Name="LocalInteresse">
+    <Key>
+      <PropertyRef Name="id_local_interesse" />
+    </Key>
+    <Property Name="id_local_interesse" Type="Int32" Nullable="false" />
+    <Property Name="data_registo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="data_intervencao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="inf_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numero_voluntarios" Type="Int32" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Utilizadors" Relationship="Self.local_interesse" FromRole="LocalInteresse" ToRole="Utilizador" />
+    <NavigationProperty Name="RegistoCampoes" Relationship="Self.LocalInteresse_RegistoCampo" FromRole="LocalInteresse" ToRole="RegistoCampo" />
+  </EntityType>
+  <EntityType Name="Localizacao">
+    <Key>
+      <PropertyRef Name="id_localizacao" />
+    </Key>
+    <Property Name="id_localizacao" Type="Int32" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Refugiado">
+    <Key>
+      <PropertyRef Name="id_refugiado" />
+    </Key>
+    <Property Name="id_refugiado" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="utilizador" Type="Int32" Nullable="false" />
+    <Property Name="data_nascimento" Type="DateTime" Precision="3" />
+    <Property Name="local_registo_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="info_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="data_registo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="paradeiro_conhecido" Type="Byte" Nullable="false" />
+    <Property Name="msg_voz" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="local_registo_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localizacao_actual_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localizacao_actual_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Refugiado_Utilizador" FromRole="Refugiado" ToRole="Utilizador" />
+  </EntityType>
+  <EntityType Name="RegistoCampo">
+    <Key>
+      <PropertyRef Name="idRegistoCampo" />
+    </Key>
+    <Property Name="idRegistoCampo" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="LocalInteresses" Relationship="Self.LocalInteresse_RegistoCampo" FromRole="RegistoCampo" ToRole="LocalInteresse" />
+  </EntityType>
+  <EntityType Name="Utilizador">
+    <Key>
+      <PropertyRef Name="id_utlizador" />
+    </Key>
+    <Property Name="id_utlizador" Type="Int32" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RegistoCampo_idRegistoCampo" Type="Int32" />
+    <NavigationProperty Name="Estatisticas" Relationship="Self.FK_Estatistica_Utilizador" FromRole="Utilizador" ToRole="Estatistica" />
+    <NavigationProperty Name="Eventoes" Relationship="Self.FK_Evento_Utilizador" FromRole="Utilizador" ToRole="Evento" />
+    <NavigationProperty Name="Refugiadoes" Relationship="Self.FK_Refugiado_Utilizador" FromRole="Utilizador" ToRole="Refugiado" />
+    <NavigationProperty Name="LocalInteresses" Relationship="Self.local_interesse" FromRole="Utilizador" ToRole="LocalInteresse" />
+  </EntityType>
+  <Association Name="FK_Estatistica_Escala">
+    <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
+    <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escala">
+        <PropertyRef Name="id_escala" />
+      </Principal>
+      <Dependent Role="Estatistica">
+        <PropertyRef Name="id_escala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estatistica_Utilizador">
+    <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+    <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizador">
+        <PropertyRef Name="id_utlizador" />
+      </Principal>
+      <Dependent Role="Estatistica">
+        <PropertyRef Name="utilizador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Utilizador">
+    <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+    <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizador">
+        <PropertyRef Name="id_utlizador" />
+      </Principal>
+      <Dependent Role="Evento">
+        <PropertyRef Name="utilizador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Refugiado_Utilizador">
+    <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+    <End Role="Refugiado" Type="Self.Refugiado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizador">
+        <PropertyRef Name="id_utlizador" />
+      </Principal>
+      <Dependent Role="Refugiado">
+        <PropertyRef Name="utilizador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="local_interesse">
+    <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="*" />
+    <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+  </Association>
+  <Association Name="LocalInteresse_RegistoCampo">
+    <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="*" />
+    <End Role="RegistoCampo" Type="Self.RegistoCampo" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="li4_back_end_entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Escalas" EntityType="Self.Escala" />
+    <EntitySet Name="Estatisticas" EntityType="Self.Estatistica" />
+    <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+    <EntitySet Name="LocalInteresses" EntityType="Self.LocalInteresse" />
+    <EntitySet Name="Localizacaos" EntityType="Self.Localizacao" />
+    <EntitySet Name="Refugiadoes" EntityType="Self.Refugiado" />
+    <EntitySet Name="RegistoCampoes" EntityType="Self.RegistoCampo" />
+    <EntitySet Name="Utilizadors" EntityType="Self.Utilizador" />
+    <AssociationSet Name="FK_Estatistica_Escala" Association="Self.FK_Estatistica_Escala">
+      <End Role="Escala" EntitySet="Escalas" />
+      <End Role="Estatistica" EntitySet="Estatisticas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estatistica_Utilizador" Association="Self.FK_Estatistica_Utilizador">
+      <End Role="Utilizador" EntitySet="Utilizadors" />
+      <End Role="Estatistica" EntitySet="Estatisticas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Utilizador" Association="Self.FK_Evento_Utilizador">
+      <End Role="Utilizador" EntitySet="Utilizadors" />
+      <End Role="Evento" EntitySet="Eventoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Refugiado_Utilizador" Association="Self.FK_Refugiado_Utilizador">
+      <End Role="Utilizador" EntitySet="Utilizadors" />
+      <End Role="Refugiado" EntitySet="Refugiadoes" />
+    </AssociationSet>
+    <AssociationSet Name="local_interesse" Association="Self.local_interesse">
+      <End Role="LocalInteresse" EntitySet="LocalInteresses" />
+      <End Role="Utilizador" EntitySet="Utilizadors" />
+    </AssociationSet>
+    <AssociationSet Name="LocalInteresse_RegistoCampo" Association="Self.LocalInteresse_RegistoCampo">
+      <End Role="LocalInteresse" EntitySet="LocalInteresses" />
+      <End Role="RegistoCampo" EntitySet="RegistoCampoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="li4_back_endModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Escala">
+          <Key>
+            <PropertyRef Name="id_escala" />
+          </Key>
+          <Property Name="id_escala" Type="int" Nullable="false" />
+          <Property Name="perigo" Type="int" Nullable="false" />
+          <Property Name="confianca" Type="int" Nullable="false" />
+          <Property Name="saude" Type="int" Nullable="false" />
+          <Property Name="autonomia" Type="int" Nullable="false" />
+          <Property Name="terceiros" Type="int" Nullable="false" />
+          <Property Name="fome" Type="int" />
+          <Property Name="esforco" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estatistica">
+          <Key>
+            <PropertyRef Name="id_estatistica" />
+          </Key>
+          <Property Name="id_estatistica" Type="int" Nullable="false" />
+          <Property Name="utilizador" Type="int" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+          <Property Name="id_escala" Type="int" Nullable="false" />
+          <Property Name="intervencao_imediata" Type="tinyint" Nullable="false" />
+          <Property Name="info_adicional" Type="varchar" MaxLength="50" />
+          <Property Name="localizacao_latitude" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="localizacao_longitude" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="int" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+          <Property Name="utilizador" Type="int" Nullable="false" />
+          <Property Name="gravidade" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="resumo_textual" Type="varchar" MaxLength="50" />
+          <Property Name="localizacao_latitude" Type="varchar" MaxLength="50" />
+          <Property Name="localizacao_longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="local_interesse">
+          <Key>
+            <PropertyRef Name="utilizador" />
+            <PropertyRef Name="localInteresse_idLocalInteresse" />
+          </Key>
+          <Property Name="utilizador" Type="int" Nullable="false" />
+          <Property Name="localInteresse_idLocalInteresse" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocalInteresse">
+          <Key>
+            <PropertyRef Name="id_local_interesse" />
+          </Key>
+          <Property Name="id_local_interesse" Type="int" Nullable="false" />
+          <Property Name="data_registo" Type="datetime" Nullable="false" />
+          <Property Name="data_intervencao" Type="datetime" Nullable="false" />
+          <Property Name="inf_adicional" Type="varchar" MaxLength="50" />
+          <Property Name="numero_voluntarios" Type="int" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LocalInteresse_RegistoCampo">
+          <Key>
+            <PropertyRef Name="LocalInteresse_idLocalInteresse" />
+            <PropertyRef Name="RegistoCampo_idRegistoCampo" />
+          </Key>
+          <Property Name="LocalInteresse_idLocalInteresse" Type="int" Nullable="false" />
+          <Property Name="RegistoCampo_idRegistoCampo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localizacao">
+          <Key>
+            <PropertyRef Name="id_localizacao" />
+          </Key>
+          <Property Name="id_localizacao" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refugiado">
+          <Key>
+            <PropertyRef Name="id_refugiado" />
+          </Key>
+          <Property Name="id_refugiado" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="utilizador" Type="int" Nullable="false" />
+          <Property Name="data_nascimento" Type="datetime" />
+          <Property Name="local_registo_latitude" Type="varchar" MaxLength="50" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="info_adicional" Type="varchar" MaxLength="50" />
+          <Property Name="data_registo" Type="datetime" Nullable="false" />
+          <Property Name="genero" Type="varchar" MaxLength="50" />
+          <Property Name="paradeiro_conhecido" Type="tinyint" Nullable="false" />
+          <Property Name="msg_voz" Type="varbinary(max)" />
+          <Property Name="local_registo_longitude" Type="varchar" MaxLength="50" />
+          <Property Name="localizacao_actual_latitude" Type="varchar" MaxLength="50" />
+          <Property Name="localizacao_actual_longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RegistoCampo">
+          <Key>
+            <PropertyRef Name="idRegistoCampo" />
+          </Key>
+          <Property Name="idRegistoCampo" Type="int" Nullable="false" />
+          <Property Name="data" Type="date" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="id_utlizador" />
+          </Key>
+          <Property Name="id_utlizador" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegistoCampo_idRegistoCampo" Type="int" />
+        </EntityType>
+        <Association Name="FK_Estatistica_Escala">
+          <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
+          <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escala">
+              <PropertyRef Name="id_escala" />
+            </Principal>
+            <Dependent Role="Estatistica">
+              <PropertyRef Name="id_escala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estatistica_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Estatistica">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_local_interesse_LocalInteresse">
+          <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="1" />
+          <End Role="local_interesse" Type="Self.local_interesse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalInteresse">
+              <PropertyRef Name="id_local_interesse" />
+            </Principal>
+            <Dependent Role="local_interesse">
+              <PropertyRef Name="localInteresse_idLocalInteresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_local_interesse_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="local_interesse" Type="Self.local_interesse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="local_interesse">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalInteresse_RegistoCampo_LocalInteresse">
+          <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="1" />
+          <End Role="LocalInteresse_RegistoCampo" Type="Self.LocalInteresse_RegistoCampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalInteresse">
+              <PropertyRef Name="id_local_interesse" />
+            </Principal>
+            <Dependent Role="LocalInteresse_RegistoCampo">
+              <PropertyRef Name="LocalInteresse_idLocalInteresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalInteresse_RegistoCampo_RegistoCampo">
+          <End Role="RegistoCampo" Type="Self.RegistoCampo" Multiplicity="1" />
+          <End Role="LocalInteresse_RegistoCampo" Type="Self.LocalInteresse_RegistoCampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistoCampo">
+              <PropertyRef Name="idRegistoCampo" />
+            </Principal>
+            <Dependent Role="LocalInteresse_RegistoCampo">
+              <PropertyRef Name="RegistoCampo_idRegistoCampo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refugiado_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Refugiado" Type="Self.Refugiado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Refugiado">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="li4_back_endModelStoreContainer">
+          <EntitySet Name="Escala" EntityType="Self.Escala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estatistica" EntityType="Self.Estatistica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="local_interesse" EntityType="Self.local_interesse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalInteresse" EntityType="Self.LocalInteresse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalInteresse_RegistoCampo" EntityType="Self.LocalInteresse_RegistoCampo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localizacao" EntityType="Self.Localizacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refugiado" EntityType="Self.Refugiado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistoCampo" EntityType="Self.RegistoCampo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizador" EntityType="Self.Utilizador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Estatistica_Escala" Association="Self.FK_Estatistica_Escala">
+            <End Role="Escala" EntitySet="Escala" />
+            <End Role="Estatistica" EntitySet="Estatistica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estatistica_Utilizador" Association="Self.FK_Estatistica_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="Estatistica" EntitySet="Estatistica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Utilizador" Association="Self.FK_Evento_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_local_interesse_LocalInteresse" Association="Self.FK_local_interesse_LocalInteresse">
+            <End Role="LocalInteresse" EntitySet="LocalInteresse" />
+            <End Role="local_interesse" EntitySet="local_interesse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_local_interesse_Utilizador" Association="Self.FK_local_interesse_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="local_interesse" EntitySet="local_interesse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalInteresse_RegistoCampo_LocalInteresse" Association="Self.FK_LocalInteresse_RegistoCampo_LocalInteresse">
+            <End Role="LocalInteresse" EntitySet="LocalInteresse" />
+            <End Role="LocalInteresse_RegistoCampo" EntitySet="LocalInteresse_RegistoCampo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalInteresse_RegistoCampo_RegistoCampo" Association="Self.FK_LocalInteresse_RegistoCampo_RegistoCampo">
+            <End Role="RegistoCampo" EntitySet="RegistoCampo" />
+            <End Role="LocalInteresse_RegistoCampo" EntitySet="LocalInteresse_RegistoCampo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refugiado_Utilizador" Association="Self.FK_Refugiado_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="Refugiado" EntitySet="Refugiado" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="li4_back_endModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Escala">
+          <Key>
+            <PropertyRef Name="id_escala" />
+          </Key>
+          <Property Name="id_escala" Type="Int32" Nullable="false" />
+          <Property Name="perigo" Type="Int32" Nullable="false" />
+          <Property Name="confianca" Type="Int32" Nullable="false" />
+          <Property Name="saude" Type="Int32" Nullable="false" />
+          <Property Name="autonomia" Type="Int32" Nullable="false" />
+          <Property Name="terceiros" Type="Int32" Nullable="false" />
+          <Property Name="fome" Type="Int32" />
+          <Property Name="esforco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estatisticas" Relationship="Self.FK_Estatistica_Escala" FromRole="Escala" ToRole="Estatistica" />
+        </EntityType>
+        <EntityType Name="Estatistica">
+          <Key>
+            <PropertyRef Name="id_estatistica" />
+          </Key>
+          <Property Name="id_estatistica" Type="Int32" Nullable="false" />
+          <Property Name="utilizador" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_escala" Type="Int32" Nullable="false" />
+          <Property Name="intervencao_imediata" Type="Byte" Nullable="false" />
+          <Property Name="info_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="localizacao_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Escala" Relationship="Self.FK_Estatistica_Escala" FromRole="Estatistica" ToRole="Escala" />
+          <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Estatistica_Utilizador" FromRole="Estatistica" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="utilizador" Type="Int32" Nullable="false" />
+          <Property Name="gravidade" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="resumo_textual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Evento_Utilizador" FromRole="Evento" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="LocalInteresse">
+          <Key>
+            <PropertyRef Name="id_local_interesse" />
+          </Key>
+          <Property Name="id_local_interesse" Type="Int32" Nullable="false" />
+          <Property Name="data_registo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_intervencao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inf_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numero_voluntarios" Type="Int32" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizadors" Relationship="Self.local_interesse" FromRole="LocalInteresse" ToRole="Utilizador" />
+          <NavigationProperty Name="RegistoCampoes" Relationship="Self.LocalInteresse_RegistoCampo" FromRole="LocalInteresse" ToRole="RegistoCampo" />
+        </EntityType>
+        <EntityType Name="Localizacao">
+          <Key>
+            <PropertyRef Name="id_localizacao" />
+          </Key>
+          <Property Name="id_localizacao" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refugiado">
+          <Key>
+            <PropertyRef Name="id_refugiado" />
+          </Key>
+          <Property Name="id_refugiado" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="utilizador" Type="Int32" Nullable="false" />
+          <Property Name="data_nascimento" Type="DateTime" Precision="3" />
+          <Property Name="local_registo_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="info_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data_registo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paradeiro_conhecido" Type="Byte" Nullable="false" />
+          <Property Name="msg_voz" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="local_registo_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao_actual_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao_actual_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Refugiado_Utilizador" FromRole="Refugiado" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="RegistoCampo">
+          <Key>
+            <PropertyRef Name="idRegistoCampo" />
+          </Key>
+          <Property Name="idRegistoCampo" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LocalInteresses" Relationship="Self.LocalInteresse_RegistoCampo" FromRole="RegistoCampo" ToRole="LocalInteresse" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="id_utlizador" />
+          </Key>
+          <Property Name="id_utlizador" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistoCampo_idRegistoCampo" Type="Int32" />
+          <NavigationProperty Name="Estatisticas" Relationship="Self.FK_Estatistica_Utilizador" FromRole="Utilizador" ToRole="Estatistica" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.FK_Evento_Utilizador" FromRole="Utilizador" ToRole="Evento" />
+          <NavigationProperty Name="Refugiadoes" Relationship="Self.FK_Refugiado_Utilizador" FromRole="Utilizador" ToRole="Refugiado" />
+          <NavigationProperty Name="LocalInteresses" Relationship="Self.local_interesse" FromRole="Utilizador" ToRole="LocalInteresse" />
+        </EntityType>
+        <Association Name="FK_Estatistica_Escala">
+          <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
+          <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escala">
+              <PropertyRef Name="id_escala" />
+            </Principal>
+            <Dependent Role="Estatistica">
+              <PropertyRef Name="id_escala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estatistica_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Estatistica">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refugiado_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="Refugiado" Type="Self.Refugiado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="id_utlizador" />
+            </Principal>
+            <Dependent Role="Refugiado">
+              <PropertyRef Name="utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="local_interesse">
+          <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="*" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+        </Association>
+        <Association Name="LocalInteresse_RegistoCampo">
+          <End Role="LocalInteresse" Type="Self.LocalInteresse" Multiplicity="*" />
+          <End Role="RegistoCampo" Type="Self.RegistoCampo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="li4_back_end_entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Escalas" EntityType="Self.Escala" />
+          <EntitySet Name="Estatisticas" EntityType="Self.Estatistica" />
+          <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+          <EntitySet Name="LocalInteresses" EntityType="Self.LocalInteresse" />
+          <EntitySet Name="Localizacaos" EntityType="Self.Localizacao" />
+          <EntitySet Name="Refugiadoes" EntityType="Self.Refugiado" />
+          <EntitySet Name="RegistoCampoes" EntityType="Self.RegistoCampo" />
+          <EntitySet Name="Utilizadors" EntityType="Self.Utilizador" />
+          <AssociationSet Name="FK_Estatistica_Escala" Association="Self.FK_Estatistica_Escala">
+            <End Role="Escala" EntitySet="Escalas" />
+            <End Role="Estatistica" EntitySet="Estatisticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estatistica_Utilizador" Association="Self.FK_Estatistica_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+            <End Role="Estatistica" EntitySet="Estatisticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Utilizador" Association="Self.FK_Evento_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+            <End Role="Evento" EntitySet="Eventoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refugiado_Utilizador" Association="Self.FK_Refugiado_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+            <End Role="Refugiado" EntitySet="Refugiadoes" />
+          </AssociationSet>
+          <AssociationSet Name="local_interesse" Association="Self.local_interesse">
+            <End Role="LocalInteresse" EntitySet="LocalInteresses" />
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+          </AssociationSet>
+          <AssociationSet Name="LocalInteresse_RegistoCampo" Association="Self.LocalInteresse_RegistoCampo">
+            <End Role="LocalInteresse" EntitySet="LocalInteresses" />
+            <End Role="RegistoCampo" EntitySet="RegistoCampoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="li4_back_endModelStoreContainer" CdmEntityContainer="li4_back_end_entities">
+          <EntitySetMapping Name="Escalas">
+            <EntityTypeMapping TypeName="li4_back_endModel.Escala">
+              <MappingFragment StoreEntitySet="Escala">
+                <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+                <ScalarProperty Name="perigo" ColumnName="perigo" />
+                <ScalarProperty Name="confianca" ColumnName="confianca" />
+                <ScalarProperty Name="saude" ColumnName="saude" />
+                <ScalarProperty Name="autonomia" ColumnName="autonomia" />
+                <ScalarProperty Name="terceiros" ColumnName="terceiros" />
+                <ScalarProperty Name="fome" ColumnName="fome" />
+                <ScalarProperty Name="esforco" ColumnName="esforco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estatisticas">
+            <EntityTypeMapping TypeName="li4_back_endModel.Estatistica">
+              <MappingFragment StoreEntitySet="Estatistica">
+                <ScalarProperty Name="id_estatistica" ColumnName="id_estatistica" />
+                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+                <ScalarProperty Name="intervencao_imediata" ColumnName="intervencao_imediata" />
+                <ScalarProperty Name="info_adicional" ColumnName="info_adicional" />
+                <ScalarProperty Name="localizacao_latitude" ColumnName="localizacao_latitude" />
+                <ScalarProperty Name="localizacao_longitude" ColumnName="localizacao_longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventoes">
+            <EntityTypeMapping TypeName="li4_back_endModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+                <ScalarProperty Name="gravidade" ColumnName="gravidade" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="resumo_textual" ColumnName="resumo_textual" />
+                <ScalarProperty Name="localizacao_latitude" ColumnName="localizacao_latitude" />
+                <ScalarProperty Name="localizacao_longitude" ColumnName="localizacao_longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalInteresses">
+            <EntityTypeMapping TypeName="li4_back_endModel.LocalInteresse">
+              <MappingFragment StoreEntitySet="LocalInteresse">
+                <ScalarProperty Name="id_local_interesse" ColumnName="id_local_interesse" />
+                <ScalarProperty Name="data_registo" ColumnName="data_registo" />
+                <ScalarProperty Name="data_intervencao" ColumnName="data_intervencao" />
+                <ScalarProperty Name="inf_adicional" ColumnName="inf_adicional" />
+                <ScalarProperty Name="numero_voluntarios" ColumnName="numero_voluntarios" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localizacaos">
+            <EntityTypeMapping TypeName="li4_back_endModel.Localizacao">
+              <MappingFragment StoreEntitySet="Localizacao">
+                <ScalarProperty Name="id_localizacao" ColumnName="id_localizacao" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refugiadoes">
+            <EntityTypeMapping TypeName="li4_back_endModel.Refugiado">
+              <MappingFragment StoreEntitySet="Refugiado">
+                <ScalarProperty Name="id_refugiado" ColumnName="id_refugiado" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+                <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+                <ScalarProperty Name="local_registo_latitude" ColumnName="local_registo_latitude" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="info_adicional" ColumnName="info_adicional" />
+                <ScalarProperty Name="data_registo" ColumnName="data_registo" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="paradeiro_conhecido" ColumnName="paradeiro_conhecido" />
+                <ScalarProperty Name="msg_voz" ColumnName="msg_voz" />
+                <ScalarProperty Name="local_registo_longitude" ColumnName="local_registo_longitude" />
+                <ScalarProperty Name="localizacao_actual_latitude" ColumnName="localizacao_actual_latitude" />
+                <ScalarProperty Name="localizacao_actual_longitude" ColumnName="localizacao_actual_longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistoCampoes">
+            <EntityTypeMapping TypeName="li4_back_endModel.RegistoCampo">
+              <MappingFragment StoreEntitySet="RegistoCampo">
+                <ScalarProperty Name="idRegistoCampo" ColumnName="idRegistoCampo" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizadors">
+            <EntityTypeMapping TypeName="li4_back_endModel.Utilizador">
+              <MappingFragment StoreEntitySet="Utilizador">
+                <ScalarProperty Name="id_utlizador" ColumnName="id_utlizador" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="RegistoCampo_idRegistoCampo" ColumnName="RegistoCampo_idRegistoCampo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="local_interesse" TypeName="li4_back_endModel.local_interesse" StoreEntitySet="local_interesse">
+            <EndProperty Name="LocalInteresse">
+              <ScalarProperty Name="id_local_interesse" ColumnName="localInteresse_idLocalInteresse" />
+            </EndProperty>
+            <EndProperty Name="Utilizador">
+              <ScalarProperty Name="id_utlizador" ColumnName="utilizador" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LocalInteresse_RegistoCampo" TypeName="li4_back_endModel.LocalInteresse_RegistoCampo" StoreEntitySet="LocalInteresse_RegistoCampo">
+            <EndProperty Name="LocalInteresse">
+              <ScalarProperty Name="id_local_interesse" ColumnName="LocalInteresse_idLocalInteresse" />
+            </EndProperty>
+            <EndProperty Name="RegistoCampo">
+              <ScalarProperty Name="idRegistoCampo" ColumnName="RegistoCampo_idRegistoCampo" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
