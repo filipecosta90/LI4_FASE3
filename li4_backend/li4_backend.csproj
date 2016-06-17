@@ -302,6 +302,7 @@
     <Content Include="Views\LocalInteresse\Editar.cshtml" />
     <Content Include="Views\LocalInteresse\Criar.cshtml" />
     <Content Include="Views\LocalInteresse\Eliminar.cshtml" />
+    <Content Include="Views\LocalInteresse\Detalhe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

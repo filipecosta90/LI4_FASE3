@@ -40,8 +40,9 @@ namespace li4_backend.Controllers
         public ActionResult Editar(int? id)
         {
             if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+            {
+                return RedirectToAction("Index");
+            }
             LocalInteresse local = base_dados.LocalInteresses.Find(id);
             if (local == null)
             {
@@ -66,8 +67,9 @@ namespace li4_backend.Controllers
         public ActionResult Eliminar(int? id)
         {
             if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+            {
+                return RedirectToAction("Index");
+            }
             LocalInteresse local = base_dados.LocalInteresses.Find(id);
             if (local == null)
             {
@@ -75,6 +77,31 @@ namespace li4_backend.Controllers
             }
             return View(local);
         }
+
+        [HttpGet]
+        public ActionResult Detalhe(int? id)
+        {
+            if (id == null) { 
+                return RedirectToAction("Index");
+            }
+            LocalInteresse local = base_dados.LocalInteresses.Find(id);
+            if (local == null)
+            {
+                return HttpNotFound();
+            }
+            return View(local);
+        }
+
+        [HttpPost]
+        public ActionResult Detalhe(LocalInteresse local)
+        {
+            if (ModelState.IsValid)
+            {
+               return RedirectToAction("Index");
+            }
+            return View(local);
+        }
+
 
         [HttpPost]
         public ActionResult Eliminar(int? id, LocalInteresse local1)
