@@ -1,0 +1,82 @@
+﻿@model IEnumerable<li4_backend.Models.Evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Adicionar Evento", "Criar")
+</p>
+<table class="table">
+    <tr>
+   
+        <th>
+            @Html.DisplayNameFor(model => model.id_evento )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gravidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resumo_textual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.localizacao_latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.localizacao_longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Utilizador1.tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_evento )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gravidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resumo_textual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.localizacao_latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.localizacao_longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Utilizador1.tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.id_evento }) |
+            @Html.ActionLink("Detalhes", "Detalhe", new { id=item.id_evento }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_evento })
+        </td>
+    </tr>
+}
+
+</table>

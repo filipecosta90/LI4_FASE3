@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalInteresseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -303,6 +304,10 @@
     <Content Include="Views\LocalInteresse\Criar.cshtml" />
     <Content Include="Views\LocalInteresse\Eliminar.cshtml" />
     <Content Include="Views\LocalInteresse\Detalhe.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Evento\Criar.cshtml" />
+    <Content Include="Views\Home\IndexAdmin.cshtml" />
+    <Content Include="Views\Home\IndexUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
