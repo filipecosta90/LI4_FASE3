@@ -18,28 +18,44 @@
         var lat;
         var long;
 
-        if (document.getElementById('latitude') != null) {
-            lat = document.getElementById('latitude').value;
-        }
-        else {
-            lat = 41.559634;
-        }
+       
 
-        if (document.getElementById('longitude') != null) {
-            long = document.getElementById('longitude').value;
-        }
-        else {
-            long = -8.397293;
-        }
-        
+
     var line = null;
     var lineSelected = null;
+    var marcador = 0;
+
     function mapa() {
 
+        lat = 41.559634;
+        long = -8.397293;
+
+        if (document.getElementById('latitude') != null && document.getElementById('longitude') != null) {
+
+            lat = document.getElementById('latitude').value;
+            long = document.getElementById('longitude').value;
+            if (lat == "" || long == "") {
+                console.log("nao tem lat e long");
+                lat = 41.559634;
+                long = -8.397293;
+                console.log(lat);
+                console.log(long);
+                marcador = 0;
+            }
+            else {
+                console.log("já tem lat e long");
+                console.log(lat);
+                console.log(long);
+                marcador = 1;
+            }
+        }
+        
+        var Latlng_0 = new google.maps.LatLng(lat, long);
 
         var opts = {
             center: new google.maps.LatLng(lat, long),
             zoom: 6, 'mapTypeId': google.maps.MapTypeId.ROADMAP,
+            center: Latlng_0,
             disableDefaultUI: true,
             draggable: true,
             zoomControl: true,
@@ -49,80 +65,40 @@
        
         map = new google.maps.Map(document.getElementById('map-li4-1'), opts);
 
+        
+
         marker = new google.maps.Marker({
-            position: event.latLng,
+          //  position: Latlng_0,
             map: map
         })
-
-        function placeMarker(localizacao) {
-            marker.setPosition(localizacao);
+        
+        if ( marcador == 1) {
+            console.log("vamos colocar marcador");
+            var Latlng_0 = new google.maps.LatLng(lat, long);
+            marker.setPosition(Latlng_0);
         }
-
-        // Define linha vermelha que representa longitude inicial - quando rato passa por cima do mapa
+       
+        // altera as variaveis lat e long quando rato passa por cima do mapa
         google.maps.event.addListener(map, 'mousemove', function (event) {
             lat = event.latLng.lat();
             long = event.latLng.lng();
-            desenhaLinha(lat,long);
-        });
+                   });
 
-        // Posiciona linha vermelha, quando o utilizador define manualmente a longitude inicial (através da área de texto)
-        $("input#longitude").on("change blur", function () {
-            placeMarker(event.latLng);
-        });
-
-        // Posiciona linha vermelha, quando o utilizador define manualmente a longitude inicial (através da área de texto)
-        $("input#latitude").on("change blur", function () {
-            placeMarker(event.latLng);
-        });
-
-        setInterval(blinkLinhaSelected, 700);
-    }
-
-    function desenhaLinha(lat,long) {
-        if (line != null) line.setMap(null);
-        var lineCoords = [new google.maps.LatLng(lat, long), new google.maps.LatLng(lat, long)];
-        line = new google.maps.Polyline({
-            path: lineCoords, strokeColor: '#FF0000',
-            strokeOpacity: 0.5, strokeWeight: 2
-        });
-        line.setMap(map);
-        google.maps.event.addListener(line, 'click', function (event) {
+        // adiciona um marcador quando há um clique do rato
+        google.maps.event.addListener(map, 'click', function (event) {
+            lat = event.latLng.lat();
+            long = event.latLng.lng();
             document.getElementById('latitude').value = lat;
             document.getElementById('longitude').value = long;
-            marker.setPosition(event.latLng);
-
-
-            //desenhaLinhaSelected(long);
-        })
-    }
-
-    function desenhaLinhaSelected(lat,long) {
-        if (lineSelected != null) lineSelected.setMap(null);
-        var lineCoords = [new google.maps.LatLng(lat, long), new google.maps.LatLng(lat, long)];
-        lineSelected = new google.maps.Polyline({
-            path: lineCoords, strokeColor: '#004373',
-            strokeOpacity: 0.5, strokeWeight: 2
+            console.log("colocado marcador por clique");
+            var Latlng_0 = new google.maps.LatLng(lat, long);
+            marker.setPosition(Latlng_0);
         });
-        lineSelected.setMap(map);
+
     }
+       google.maps.event.addDomListener(window, 'load', mapa);
 
-    function blinkLinhaSelected() {
-        if (lineSelected != null) {
-            if (lineSelected.getMap() == null) {
-                lineSelected.setMap(map);
-            } else {
-                lineSelected.setMap(null);
-            }
-        }
-    }
-
-    google.maps.event.addDomListener(window, 'load', mapa);
-
-   
     </script>
-
-
-
 
 
 </head>
