@@ -6,95 +6,120 @@
 
 <h2>Criar</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Criar", "Evento", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Evento</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_evento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_evento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_evento, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_evento, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.id_evento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.id_evento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.data, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.data, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.utilizador)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.gravidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.DropDownListFor(
+                model => model.gravidade,
+                new SelectList(
+                    new List<Object>{
+                        new { value = "1" , text = "1"  },
+                        new { value = "2" , text = "2" },
+                        new { value = "3" , text = "3" },
+                        new { value = "4" , text = "4"  },
+                        new { value = "5" , text = "5" },
+                        new { value = "6" , text = "6" },
+                        new { value = "7" , text = "7"  },
+                        new { value = "8" , text = "8" },
+                        new { value = "9" , text = "9" },
+                        new { value = "10" , text = "10" }
+                    }, "value", "text", 1
+                     ), new { @class = "form-control" }
+            )
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.DropDownListFor(
+                model => model.tipo,
+                new SelectList(
+                    new List<Object>{
+                        new { value = "Situação Pontual" , text = "Situação Pontual"  },
+                        new { value = "Intervenção Imediata" , text = "Intervenção Imediata"  },
+                        new { value = "Condições terreno desfavoráveis" , text = "Condições Terreno Desfavoráveis"  },
+                        new { value = "Zona Perigosa por acção de grupos/melícias" , text = "Zona Perigosa por acção de grupos/melícias" }
+                    }, "value", "text", "Situação Pontual"
+                     ), new { @class = "form-control" }
+            )
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.resumo_textual, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.resumo_textual, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.resumo_textual, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.localizacao_latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.localizacao_latitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.localizacao_latitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.localizacao_longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.localizacao_longitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.localizacao_longitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="file" id="foto" name="upload" />
+            </div>
+        </div>
+        <div class="row">
+
+            <div>
+                <h3 class="text-center">Localização do Evento</h3>
+                <div id="map-li4-2" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.data, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.data, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Criar" class="btn btn-default" />
+                </div>
             </div>
         </div>
+                }
 
-      
-                @Html.HiddenFor(model => model.utilizador)
-   
+                <div>
+                    @Html.ActionLink("Voltar", "Index")
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.gravidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.gravidade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.gravidade, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.foto, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.resumo_textual, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.resumo_textual, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.resumo_textual, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.localizacao_latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.localizacao_latitude, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.localizacao_latitude, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.localizacao_longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.localizacao_longitude, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.localizacao_longitude, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }

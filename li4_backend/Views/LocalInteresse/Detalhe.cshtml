@@ -18,56 +18,49 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.id_local_interesse, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.id_local_interesse, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.data_registo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.data_registo, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.data_registo, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.data_intervencao, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.data_intervencao, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.data_intervencao, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.data_intervencao, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.inf_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.inf_adicional, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.inf_adicional, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.inf_adicional, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.numero_voluntarios, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.numero_voluntarios, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.numero_voluntarios, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.numero_voluntarios, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.latitude, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.latitude, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-offset-4">
-                            @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.longitude, new { @class = "form-control", disabled = "disabled" })
                         </div>
                     </div>
                 </div>

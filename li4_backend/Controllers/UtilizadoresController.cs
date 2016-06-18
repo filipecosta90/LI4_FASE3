@@ -10,7 +10,6 @@ namespace li4_backend.Controllers
 {
     public class UtilizadoresController : Controller
     {
-
         li4_back_end_entities base_dados = new li4_back_end_entities();
 
         public ActionResult Index()

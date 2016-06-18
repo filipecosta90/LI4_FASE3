@@ -14,21 +14,26 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7lGfBvhst2b6mIwWMH6g7j7HKLVDrGQw&sensor=false"></script>
     <script type="text/javascript">
         var map;
+        var mapa2;
         var marker;
         var lat;
         var long;
-
-       
-
+        var marker2;
+        var lat2;
+        var long2;
 
     var line = null;
     var lineSelected = null;
     var marcador = 0;
+    var marcador2 = 0;
 
     function mapa() {
 
         lat = 41.559634;
         long = -8.397293;
+
+        lat2 = 41.559634;
+        long2 = -8.397293;
 
         if (document.getElementById('latitude') != null && document.getElementById('longitude') != null) {
 
@@ -49,8 +54,30 @@
                 marcador = 1;
             }
         }
+
+        if (document.getElementById('localizacao_latitude') != null && document.getElementById('localizacao_longitude') != null) {
+
+            lat2 = document.getElementById('localizacao_latitude').value;
+            long2 = document.getElementById('localizacao_longitude').value;
+            if (lat2 == "" || long2 == "") {
+                console.log("nao tem lat2 e long2");
+                lat2 = 41.559634;
+                long2 = -8.397293;
+                console.log(lat2);
+                console.log(long2);
+                marcador2 = 0;
+            }
+            else {
+                console.log("já tem lat2 e long2");
+                console.log(lat2);
+                console.log(long2);
+                marcador2 = 1;
+            }
+        }
+
         
         var Latlng_0 = new google.maps.LatLng(lat, long);
+        var Latlng_2 = new google.maps.LatLng(lat2, long2);
 
         var opts = {
             center: new google.maps.LatLng(lat, long),
@@ -62,38 +89,90 @@
             scrollwheel: true,
             disableDoubleClickZoom: true
         }
-       
-        map = new google.maps.Map(document.getElementById('map-li4-1'), opts);
 
-        
-
-        marker = new google.maps.Marker({
-          //  position: Latlng_0,
-            map: map
-        })
-        
-        if ( marcador == 1) {
-            console.log("vamos colocar marcador");
-            var Latlng_0 = new google.maps.LatLng(lat, long);
-            marker.setPosition(Latlng_0);
+        var opts2 = {
+            center: new google.maps.LatLng(lat2, long2),
+            zoom: 6, 'mapTypeId': google.maps.MapTypeId.ROADMAP,
+            center: Latlng_2,
+            disableDefaultUI: true,
+            draggable: true,
+            zoomControl: true,
+            scrollwheel: true,
+            disableDoubleClickZoom: true
         }
-       
-        // altera as variaveis lat e long quando rato passa por cima do mapa
-        google.maps.event.addListener(map, 'mousemove', function (event) {
-            lat = event.latLng.lat();
-            long = event.latLng.lng();
-                   });
+        if (document.getElementById('map-li4-1') != null) {
+            map = new google.maps.Map(document.getElementById('map-li4-1'), opts);
+            marker = new google.maps.Marker({
+                map: map
+            })
 
-        // adiciona um marcador quando há um clique do rato
-        google.maps.event.addListener(map, 'click', function (event) {
-            lat = event.latLng.lat();
-            long = event.latLng.lng();
-            document.getElementById('latitude').value = lat;
-            document.getElementById('longitude').value = long;
-            console.log("colocado marcador por clique");
-            var Latlng_0 = new google.maps.LatLng(lat, long);
-            marker.setPosition(Latlng_0);
-        });
+            if (marcador == 1) {
+                console.log("vamos colocar marcador");
+                var Latlng_0 = new google.maps.LatLng(lat, long);
+                marker.setPosition(Latlng_0);
+            }
+
+            // altera as variaveis lat e long quando rato passa por cima do mapa
+            google.maps.event.addListener(map, 'mousemove', function (event) {
+                lat = event.latLng.lat();
+                long = event.latLng.lng();
+            });
+
+            // adiciona um marcador quando há um clique do rato
+            google.maps.event.addListener(map, 'click', function (event) {
+                lat = event.latLng.lat();
+                long = event.latLng.lng();
+                document.getElementById('latitude').value = lat;
+                document.getElementById('longitude').value = long;
+                console.log("colocado marcador por clique");
+                var Latlng_0 = new google.maps.LatLng(lat, long);
+                marker.setPosition(Latlng_0);
+            });
+
+        }
+
+        if (document.getElementById('map-li4-2') != null) {
+            mapa2 = new google.maps.Map(document.getElementById('map-li4-2'), opts2);
+            marker2 = new google.maps.Marker({
+                map: mapa2
+            })
+
+            
+
+
+            if (marcador2 == 1) {
+                console.log("vamos colocar marcador no mapa2");
+                var Latlng_2 = new google.maps.LatLng(lat2, long2);
+                marker2.setPosition(Latlng_2);
+            }
+
+            // altera as variaveis lat e long quando rato passa por cima do mapa
+            google.maps.event.addListener(mapa2, 'mousemove', function (event) {
+                lat2 = event.latLng.lat();
+                long2 = event.latLng.lng();
+            });
+
+            // adiciona um marcador quando há um clique do rato
+            google.maps.event.addListener(mapa2, 'click', function (event) {
+                lat2 = event.latLng.lat();
+                long2 = event.latLng.lng();
+                document.getElementById('localizacao_latitude').value = lat2;
+                document.getElementById('localizacao_longitude').value = long2;
+                console.log("colocado marcador por clique no mapa2");
+                var Latlng_2 = new google.maps.LatLng(lat2, long2);
+                marker2.setPosition(Latlng_2);
+            });
+
+        }
+        
+        
+
+
+       
+
+        
+
+        
 
     }
        google.maps.event.addDomListener(window, 'load', mapa);

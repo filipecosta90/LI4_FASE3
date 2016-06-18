@@ -4,14 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+
+<h2>Eventos do utilizador @ViewBag.id_user</h2>
 
 <p>
-    @Html.ActionLink("Adicionar Evento", "Criar")
+    @Html.ActionLink("Adicionar Evento", "Criar", new { id = @ViewBag.id_user })
 </p>
 <table class="table">
     <tr>
-   
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.id_evento )
         </th>
@@ -25,9 +29,6 @@
             @Html.DisplayNameFor(model => model.tipo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.resumo_textual)
         </th>
         <th>
@@ -37,7 +38,7 @@
             @Html.DisplayNameFor(model => model.localizacao_longitude)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Utilizador1.tipo)
+            @Html.DisplayNameFor(model => model.utilizador)
         </th>
         <th></th>
     </tr>
@@ -45,6 +46,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @if (item.foto != null)
+            {
+
+                <div class="thumbnail">
+                    <img src="@Url.Action("RenderImage", new { id = item.id_evento})" alt="fotografia" />
+                </div>
+
+
+            }
+        </td>  
+         <td>
             @Html.DisplayFor(modelItem => item.id_evento )
         </td>
         <td>
@@ -56,9 +68,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.tipo)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.foto)
-        </td>
+
+       
         <td>
             @Html.DisplayFor(modelItem => item.resumo_textual)
         </td>
@@ -69,11 +80,11 @@
             @Html.DisplayFor(modelItem => item.localizacao_longitude)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Utilizador1.tipo)
+            @Html.DisplayFor(modelItem => item.utilizador)
         </td>
         <td>
             @Html.ActionLink("Editar", "Editar", new { id=item.id_evento }) |
-            @Html.ActionLink("Detalhes", "Detalhe", new { id=item.id_evento }) |
+            @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_evento }) |
             @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_evento })
         </td>
     </tr>

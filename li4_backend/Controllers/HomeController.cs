@@ -28,15 +28,15 @@ namespace li4_backend.Controllers
                 {
                     if (user_corrente.tipo == "admin" && user_bd.tipo == "admin" && user_corrente.password == user_bd.password)
                     {
-                        TempData["user"] = user_bd;
-                        return RedirectToAction("IndexAdmin", user_bd);
+                        Response.Cookies["userid"].Value = user_bd.id_utlizador.ToString();
+                        return RedirectToActionPermanent("IndexAdmin", user_bd);
                     }
                     else
                     {
                         if (user_corrente.password == user_bd.password)
                         {
-                            TempData["user"]  = user_bd;
-                            return RedirectToAction("IndexUser", user_bd);
+                            Response.Cookies["userid"].Value = user_bd.id_utlizador.ToString();
+                            return RedirectToActionPermanent("IndexUser", user_bd);
                         }
                     }
                 }
@@ -47,7 +47,7 @@ namespace li4_backend.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult IndexAdmin(Utilizador user_corrente)
+                public ActionResult IndexAdmin(Utilizador user_corrente)
         {
             Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
             if (user_bd != null)
@@ -59,7 +59,7 @@ namespace li4_backend.Controllers
 
         public ActionResult IndexUser(Utilizador user_corrente)
         {
-            Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
+            Utilizador user_bd = base_dados.Utilizadors.Find(int.Parse(Request.Cookies["userid"].Value));
             if (user_bd != null)
             {
                 return View(user_corrente);
@@ -67,5 +67,9 @@ namespace li4_backend.Controllers
             else return RedirectToAction("Index");
         }
 
+       
     }
+
+   
+
 }

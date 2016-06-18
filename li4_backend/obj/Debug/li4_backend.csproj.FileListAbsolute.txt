@@ -66,4 +66,3 @@ C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\M
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\obj\Debug\li4_backend.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\obj\Debug\li4_backend.pdb
-C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\obj\Debug\li4_backend.csprojResolveAssemblyReference.cache
