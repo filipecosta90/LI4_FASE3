@@ -295,7 +295,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Utilizadores\Listar.cshtml" />
+    <Content Include="Views\Utilizadores\Index.cshtml" />
     <Content Include="Views\Utilizadores\Criar.cshtml" />
     <Content Include="Views\Utilizadores\Editar.cshtml" />
     <Content Include="Views\Utilizadores\Eliminar.cshtml" />

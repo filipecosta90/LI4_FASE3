@@ -24,17 +24,24 @@ namespace li4_backend.Controllers
             if (ModelState.IsValid)
             {
                 Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
-                if (user_bd != null) { 
-                if (user_corrente.tipo == "admin" && user_bd.tipo == "admin" && user_corrente.password == user_bd.password )
+                if (user_bd != null)
                 {
-                    return RedirectToAction("IndexAdmin" , user_corrente);
-                }
-                else 
-                {
-                        if (user_corrente.password == user_bd.password ) { 
-                    return RedirectToAction("IndexUser", user_corrente);
-                }
+                    if (user_corrente.tipo == "admin" && user_bd.tipo == "admin" && user_corrente.password == user_bd.password)
+                    {
+                        TempData["user"] = user_bd;
+                        return RedirectToAction("IndexAdmin", user_bd);
                     }
+                    else
+                    {
+                        if (user_corrente.password == user_bd.password)
+                        {
+                            TempData["user"]  = user_bd;
+                            return RedirectToAction("IndexUser", user_bd);
+                        }
+                    }
+                }
+                else {
+                    return RedirectToAction("Index");
                 }
             }
             return RedirectToAction("Index");
@@ -42,15 +49,23 @@ namespace li4_backend.Controllers
 
         public ActionResult IndexAdmin(Utilizador user_corrente)
         {
-            return View();
+            Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
+            if (user_bd != null)
+            {
+                return View(user_corrente);
+            }
+            else return RedirectToAction("Index");
         }
 
         public ActionResult IndexUser(Utilizador user_corrente)
         {
-            return View();
+            Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
+            if (user_bd != null)
+            {
+                return View(user_corrente);
+            }
+            else return RedirectToAction("Index");
         }
-
-
 
     }
 }

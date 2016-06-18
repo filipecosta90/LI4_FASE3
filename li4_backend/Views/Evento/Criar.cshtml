@@ -31,13 +31,9 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.utilizador, "utilizador", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("utilizador", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.utilizador, "", new { @class = "text-danger" })
-            </div>
-        </div>
+      
+                @Html.HiddenFor(model => model.utilizador)
+   
 
         <div class="form-group">
             @Html.LabelFor(model => model.gravidade, htmlAttributes: new { @class = "control-label col-md-2" })

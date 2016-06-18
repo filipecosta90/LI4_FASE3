@@ -7,20 +7,39 @@ using System.Web.Mvc;
 
 namespace li4_backend.Controllers
 {
+
     public class EventoController : Controller
     {
         li4_back_end_entities base_dados = new li4_back_end_entities();
-
+        int user_actual = -1;
         // GET: Evento
-        public ActionResult Index()
-        {
-            return View(base_dados.Eventoes.ToList());
-        }
 
         [HttpGet]
+        public ActionResult Index(int?  id)
+        {
+            if (id != null) { 
+            Utilizador user_bd = base_dados.Utilizadors.Find(id);
+            if (user_bd != null)
+            {
+                user_actual = (int)id;
+                return View(base_dados.Eventoes.ToList());
+            }
+        }
+        return RedirectToAction("Index", "Home");
+        }
+
+
         public ActionResult Criar()
         {
-            return View();
+
+             //   Utilizador user_bd = base_dados.Utilizadors.Find(user_actual);
+         //       if (user_bd != null)
+          //      {
+                    Evento novo_evento = new Evento();
+                    return View(novo_evento);
+           //     }
+            
+       //     return RedirectToAction("Index", "Home" );
         }
 
         [HttpPost]
@@ -28,6 +47,7 @@ namespace li4_backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                novo_evento.utilizador = user_actual;
                 base_dados.Eventoes.Add(novo_evento);
                 base_dados.SaveChanges();
                 return RedirectToAction("Index");

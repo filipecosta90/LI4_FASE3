@@ -13,7 +13,7 @@ namespace li4_backend.Controllers
 
         li4_back_end_entities base_dados = new li4_back_end_entities();
 
-        public ActionResult Listar()
+        public ActionResult Index()
         {
             return View( base_dados.Utilizadors.ToList() );
         }
@@ -28,7 +28,7 @@ namespace li4_backend.Controllers
             if (ModelState.IsValid) {
                 base_dados.Utilizadors.Add(novo_user);
                 base_dados.SaveChanges();
-                return RedirectToAction("Listar");
+                return RedirectToAction("Index");
             }
             return View(novo_user);
          }
@@ -53,7 +53,7 @@ namespace li4_backend.Controllers
             {
                 base_dados.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 base_dados.SaveChanges();
-                return RedirectToAction("Listar");
+                return RedirectToAction("Index");
             }
             return View(user);
         }
@@ -81,7 +81,7 @@ namespace li4_backend.Controllers
                 user = base_dados.Utilizadors.Find(id);
                 base_dados.Entry(user).State = System.Data.Entity.EntityState.Deleted;
                 base_dados.SaveChanges();
-                return RedirectToAction("Listar");
+                return RedirectToAction("Index");
             }
             return View(user);
         }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<li4_backend.Models.Utilizador>
 
 @{
-    ViewBag.Title = "Listar";
+    ViewBag.Title = "Index";
 }
 
 <h2>Listar</h2>
@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.password)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.id_utlizador }) |
+            @Html.ActionLink("Editar", "Editar", new { id=item.id_utlizador }) 
             @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_utlizador })
         </td>
     </tr>
