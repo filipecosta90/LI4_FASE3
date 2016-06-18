@@ -3,104 +3,104 @@
 @model li4_backend.Models.Evento
 
 @{
-    ViewBag.Title = "Eliminar";
+ViewBag.Title = "Eliminar";
 }
 
 <h2>Eliminar</h2>
 <h3>Tem a certeza que pretende eliminar?</h3>
 
 <div>
+  <h4>Evento</h4>
+  <hr />
+
+  @using (Html.BeginForm("EliminarEveto"))
+  {
+  <div class="form-horizontal">
     <h4>Evento</h4>
     <hr />
-
-@using (Html.BeginForm("EliminarEveto"))
-{
-        <div class="form-horizontal">
-            <h4>Evento</h4>
-            <hr />
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="container">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.id_evento, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.id_evento, new { @class = "form-control", disabled = "disabled" } )
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.data, new { @class = "form-control", disabled = "disabled" } )
-                            </div>
-                        </div>
-                        @Html.HiddenFor(model => model.utilizador)
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.gravidade,  htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                               
-                                 @Html.TextBoxFor(model => model.gravidade, new { @class = "form-control", disabled = "disabled" })
-                                                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.tipo, new { @class = "form-control", disabled = "disabled" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.resumo_textual, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.resumo_textual, new { @class = "form-control", disabled = "disabled" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.localizacao_latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.localizacao_latitude, new { @class = "form-control", disabled = "disabled" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.localizacao_longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-offset-4">
-                                @Html.TextBoxFor(model => model.localizacao_longitude, new { @class = "form-control", disabled = "disabled" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-
-                    @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label" })
-                    @if (Model.foto != null)
-                    {
-
-                        <div>
-                            <img src="@Url.Action("RenderImage", new { id = Model.id_evento})" alt="fotografia" class="img-responsive" />
-                        </div>
-                    }
-                    <p>
-                      </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="container">
+          <div class="form-group">
+            @Html.LabelFor(model => model.id_evento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.id_evento, new { @class = "form-control", disabled = "disabled" } )
             </div>
-            <div class="row">
-
-                <div>
-                    <h3 class="text-center">Localização do Evento</h3>
-                    <div id="map-li4-2" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
-                </div>
+          </div>
+          <div class="form-group">
+            @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.data, new { @class = "form-control", disabled = "disabled" } )
             </div>
+          </div>
+          @Html.HiddenFor(model => model.utilizador)
+          <div class="form-group">
+            @Html.LabelFor(model => model.gravidade,  htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
 
-                <div class="form-actions no-color">
-                    <input type="submit" value="Eliminar" class="btn btn-default" />
+              @Html.TextBoxFor(model => model.gravidade, new { @class = "form-control", disabled = "disabled" })
             </div>
+          </div>
+          <div class="form-group">
+            @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.tipo, new { @class = "form-control", disabled = "disabled" })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.resumo_textual, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.resumo_textual, new { @class = "form-control", disabled = "disabled" })
+            </div>
+          </div>
+          <div class="form-group">
+            @Html.LabelFor(model => model.localizacao_latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.localizacao_latitude, new { @class = "form-control", disabled = "disabled" })
+            </div>
+          </div>
+          <div class="form-group">
+            @Html.LabelFor(model => model.localizacao_longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-4">
+              @Html.TextBoxFor(model => model.localizacao_longitude, new { @class = "form-control", disabled = "disabled" })
+            </div>
+          </div>
         </div>
-    }
+      </div>
+      <div class="col-md-6">
 
-    <div>
+        @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label" })
+        @if (Model.foto != null)
+        {
+
+        <div>
+          <img src="@Url.Action("RenderImage", new { id = Model.id_evento})" alt="fotografia" class="img-responsive" />
+        </div>
+        }
         <p>
-            @Html.ActionLink("Voltar", "Index", "Evento")
-        </p>
+      </div>
+    </div>
+    <div class="row">
+
+      <div>
+        <h3 class="text-center">Localização do Evento</h3>
+        <div id="map-li4-2" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
+      </div>
     </div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+    <div class="form-actions no-color">
+      <input type="submit" value="Eliminar" class="btn btn-default" />
+    </div>
+  </div>
+  }
+
+  <div>
+    <p>
+    @Html.ActionLink("Voltar", "Index", "Evento")
+    </p>
+  </div>
+
+  @section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  }

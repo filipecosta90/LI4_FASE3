@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<li4_backend.Models.Evento>
 
 @{
-    ViewBag.Title = "Index";
+ViewBag.Title = "Index";
 }
 
 
@@ -9,85 +9,85 @@
 <h2>Eventos do utilizador @ViewBag.id_user</h2>
 
 <p>
-    @Html.ActionLink("Adicionar Evento", "Criar", new { id = @ViewBag.id_user })
+@Html.ActionLink("Adicionar Evento", "Criar", new { id = @ViewBag.id_user })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_evento )
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gravidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.resumo_textual)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.localizacao_latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.localizacao_longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.utilizador)
-        </th>
-        <th></th>
-    </tr>
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.foto)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.id_evento )
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.data)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.gravidade)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.tipo)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.resumo_textual)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.localizacao_latitude)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.localizacao_longitude)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.utilizador)
+    </th>
+    <th></th>
+  </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @if (item.foto != null)
-            {
+  @foreach (var item in Model) {
+  <tr>
+    <td>
+      @if (item.foto != null)
+      {
 
-                <div class="thumbnail">
-                    <img src="@Url.Action("RenderImage", new { id = item.id_evento})" alt="fotografia" />
-                </div>
+      <div class="thumbnail">
+        <img src="@Url.Action("RenderImage", new { id = item.id_evento})" alt="fotografia" />
+      </div>
 
 
-            }
-        </td>  
-         <td>
-            @Html.DisplayFor(modelItem => item.id_evento )
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gravidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo)
-        </td>
+      }
+    </td>  
+    <td>
+      @Html.DisplayFor(modelItem => item.id_evento )
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.data)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.gravidade)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.tipo)
+    </td>
 
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.resumo_textual)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.localizacao_latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.localizacao_longitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.utilizador)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.id_evento }) |
-            @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_evento }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_evento })
-        </td>
-    </tr>
-}
+
+    <td>
+      @Html.DisplayFor(modelItem => item.resumo_textual)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.localizacao_latitude)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.localizacao_longitude)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.utilizador)
+    </td>
+    <td>
+      @Html.ActionLink("Editar", "Editar", new { id=item.id_evento }) |
+      @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_evento }) |
+      @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_evento })
+    </td>
+  </tr>
+  }
 
 </table>

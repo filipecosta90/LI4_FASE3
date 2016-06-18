@@ -1,68 +1,68 @@
 ﻿@model IEnumerable<li4_backend.Models.LocalInteresse>
 
 @{
-    ViewBag.Title = "Index";
+ViewBag.Title = "Index";
 }
 \
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Adicionar Local Interesse", "Criar")
+@Html.ActionLink("Adicionar Local Interesse", "Criar")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_local_interesse )
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data_registo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data_intervencao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.inf_adicional)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numero_voluntarios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.longitude)
-        </th>
-        <th></th>
-    </tr>
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.id_local_interesse )
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.data_registo)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.data_intervencao)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.inf_adicional)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.numero_voluntarios)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.latitude)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.longitude)
+    </th>
+    <th></th>
+  </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_local_interesse )
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_registo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_intervencao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.inf_adicional)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numero_voluntarios)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.longitude)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.id_local_interesse }) |
-            @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_local_interesse }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_local_interesse })
-        </td>
-    </tr>
-}
+  @foreach (var item in Model) {
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem => item.id_local_interesse )
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.data_registo)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.data_intervencao)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.inf_adicional)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.numero_voluntarios)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.latitude)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.longitude)
+    </td>
+    <td>
+      @Html.ActionLink("Editar", "Editar", new { id=item.id_local_interesse }) |
+      @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_local_interesse }) |
+      @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_local_interesse })
+    </td>
+  </tr>
+  }
 </table>

@@ -1,87 +1,87 @@
 ﻿@model li4_backend.Models.LocalInteresse
 
 @{
-    ViewBag.Title = "Detalhe";
+ViewBag.Title = "Detalhe";
 }
 
 <h2>Visualizar</h2>
 
 @using (Html.BeginForm("DetalheLocalInteresse"))
 {
-    <div class="form-horizontal">
-        <h4>LocalInteresse</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.data_registo, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.data_intervencao, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.data_intervencao, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.inf_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.inf_adicional, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.numero_voluntarios, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.numero_voluntarios, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.latitude, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-offset-4">
-                            @Html.TextBoxFor(model => model.longitude, new { @class = "form-control", disabled = "disabled" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h3 class="text-center">Localização do Local de Intervenção</h3>
-                <div id="map-li4-1" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
-            </div>
+<div class="form-horizontal">
+  <h4>LocalInteresse</h4>
+  <hr />
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  <div class="row">
+    <div class="col-md-6">
+      <div class="container">
+        <div class="form-group">
+          @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
+          </div>
         </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.data_registo, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.data_intervencao, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.data_intervencao, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.inf_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.inf_adicional, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.numero_voluntarios, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.numero_voluntarios, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.latitude, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-offset-4">
+            @Html.TextBoxFor(model => model.longitude, new { @class = "form-control", disabled = "disabled" })
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-md-6">
+      <h3 class="text-center">Localização do Local de Intervenção</h3>
+      <div id="map-li4-1" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
+    </div>
+  </div>
+</div>
 }
 
 <div class="row">
 
-    <div>
-        @Html.ActionLink("Editar", "Editar", new { id = Model.id_local_interesse }) |
-        @Html.ActionLink("Voltar", "Index")    </div>
+  <div>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.id_local_interesse }) |
+    @Html.ActionLink("Voltar", "Index")    </div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+  @section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  }
 </div>
 
 

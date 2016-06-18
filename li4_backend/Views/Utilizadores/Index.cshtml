@@ -1,44 +1,44 @@
 ﻿@model IEnumerable<li4_backend.Models.Utilizador>
 
 @{
-    ViewBag.Title = "Index";
+ViewBag.Title = "Index";
 }
 
 <h2>Listar</h2>
 
 <p>
-    @Html.ActionLink("Criar Novo", "Criar")
+@Html.ActionLink("Criar Novo", "Criar")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_utlizador )
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th></th>
-    </tr>
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.id_utlizador )
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.tipo)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.password)
+    </th>
+    <th></th>
+  </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <th>
-            @Html.DisplayFor(modelItem => item.id_utlizador)
-        </th>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.id_utlizador }) 
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_utlizador })
-        </td>
-    </tr>
-}
+  @foreach (var item in Model) {
+  <tr>
+    <th>
+      @Html.DisplayFor(modelItem => item.id_utlizador)
+    </th>
+    <td>
+      @Html.DisplayFor(modelItem => item.tipo)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.password)
+    </td>
+    <td>
+      @Html.ActionLink("Editar", "Editar", new { id=item.id_utlizador }) 
+      @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_utlizador })
+    </td>
+  </tr>
+  }
 
 </table>

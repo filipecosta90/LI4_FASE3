@@ -1,7 +1,7 @@
 ﻿@model li4_backend.Models.Utilizador
 
 @{
-    ViewBag.Title = "Index";
+ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -9,52 +9,53 @@
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Utilizador</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_utlizador, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_utlizador, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_utlizador, "", new { @class = "text-danger" })
-            </div>
-        </div>
+@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(
-                model => model.tipo,
-                new SelectList(
-                    new List<Object>{
-                        new { value = "admin" , text = "Administrador"  },
-                        new { value = "user" , text = "Voluntário" },
-                    }, "value", "text", 2
-                     ), new { @class = "form-control" }
-            )
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-           
-          <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-       <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-default" />
-            </div>
-        </div>
+<div class="form-horizontal">
+  <h4>Utilizador</h4>
+  <hr />
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  <div class="form-group">
+    @Html.LabelFor(model => model.id_utlizador, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+      @Html.EditorFor(model => model.id_utlizador, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.id_utlizador, "", new { @class = "text-danger" })
     </div>
+  </div>
+
+  <div class="form-group">
+    @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+      @Html.DropDownListFor(
+      model => model.tipo,
+      new SelectList(
+      new List<Object>{
+        new { value = "admin" , text = "Administrador"  },
+        new { value = "user" , text = "Voluntário" },
+        }, "value", "text", 2
+        ), new { @class = "form-control" }
+        )
+      </div>
+    </div>
+
+    <div class="form-group">
+      @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+      <div class="col-md-10">
+        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Login" class="btn btn-default" />
+      </div>
+    </div>
+  </div>
+</div>
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryval")
 }
