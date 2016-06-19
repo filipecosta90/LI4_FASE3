@@ -15,6 +15,7 @@ namespace li4_backend.Controllers
         // GET: LocalIntervencao
         public ActionResult Index()
         {
+            ViewBag.user_admin = "1";
             return View(base_dados.LocalInteresses.ToList());
         }
 
@@ -22,7 +23,11 @@ namespace li4_backend.Controllers
         public ActionResult Criar()
         {
             LocalInteresse novo_local = new LocalInteresse();
-            var maxValue = base_dados.LocalInteresses.Max(x => x.id_local_interesse);
+            var maxValue = 0;
+            if (base_dados.Estatisticas.Count() > 0)
+            {
+                maxValue = base_dados.LocalInteresses.Max(x => x.id_local_interesse);
+            }
             novo_local.id_local_interesse = maxValue + 1;
             return View(novo_local);
         }

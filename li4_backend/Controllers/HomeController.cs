@@ -9,8 +9,8 @@ namespace li4_backend.Controllers
 {
     public class HomeController : Controller
     {
-
         li4_back_end_entities base_dados = new li4_back_end_entities();
+
         Utilizador user_actual;
         public ActionResult Index()
         {
@@ -19,7 +19,7 @@ namespace li4_backend.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index( Utilizador user_corrente)
+        public ActionResult Index(Utilizador user_corrente)
         {
             if (ModelState.IsValid)
             {
@@ -40,18 +40,21 @@ namespace li4_backend.Controllers
                         }
                     }
                 }
-                else {
+                else
+                {
                     return RedirectToAction("Index");
                 }
             }
             return RedirectToAction("Index");
         }
 
-                public ActionResult IndexAdmin(Utilizador user_corrente)
+        public ActionResult IndexAdmin(Utilizador user_corrente)
         {
             Utilizador user_bd = base_dados.Utilizadors.Find(user_corrente.id_utlizador);
             if (user_bd != null)
             {
+                ViewBag.id_user = int.Parse(Request.Cookies["userid"].Value);
+                ViewBag.user_admin = "1";
                 return View(user_corrente);
             }
             else return RedirectToAction("Index");
@@ -62,14 +65,23 @@ namespace li4_backend.Controllers
             Utilizador user_bd = base_dados.Utilizadors.Find(int.Parse(Request.Cookies["userid"].Value));
             if (user_bd != null)
             {
+                ViewBag.id_user = int.Parse(Request.Cookies["userid"].Value);
+                ViewBag.user_vol = "1";
                 return View(user_corrente);
             }
             else return RedirectToAction("Index");
         }
 
-       
+        public ActionResult Logout(int? id)
+        {
+            Request.Cookies.Remove("userid");
+            ViewBag.user_admin = null;
+            ViewBag.user_vol = null;
+            ViewBag.id_user = null;
+            return RedirectToAction("Index");
+        }
     }
 
-   
+
 
 }

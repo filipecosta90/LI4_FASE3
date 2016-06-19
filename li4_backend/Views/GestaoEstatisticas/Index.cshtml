@@ -1,0 +1,112 @@
+﻿@model IEnumerable<li4_backend.Models.Estatistica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Localização de todas as estatísticas</h2>
+<h4>Clique para ver detalhe da estatística correspondete</h4>
+<div id="map_canvas" style="width:100%; height:470px;"></div>
+<script type="text/javascript">
+
+    var markersArray = [];
+    function initialize() {
+        var latlng = new google.maps.LatLng(50, 20);
+        var options = {
+            zoom: 3, center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById
+			("map_canvas"), options);
+
+        @foreach(var item in Model)
+        {
+            <text>
+        console.log(@item.latitude)
+        console.log(@item.longitude)
+        var url_estatistica = '@Url.Action("Detalhe", "Estatistica", new { id = item.id_estatistica })'
+        console.log(url_estatistica)
+
+
+        markersArray.push(new google.maps.Marker({
+            draggable: false,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng('@item.latitude', '@item.longitude', false),
+            url: url_estatistica,
+            title: 'Whatever title',
+            map: map
+        }));
+        console.log(markersArray.length);
+        google.maps.event.addListener(markersArray[markersArray.length - 1], 'click', function () {
+            window.location.href = url_estatistica;
+        });
+
+        </text>
+        }
+    }
+    $(function () {
+        initialize();
+    });
+
+</script>
+
+<h2>Dados agregados:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           
+            Número total de estatísticas
+        </th>
+        <th>
+            Número de estatísticas que requerem acção imediata
+        </th>
+        <th>
+            Fome
+        </th>
+        <th>
+           Perigo
+        </th>
+        <th>
+          Esforço
+        </th>
+        <th>
+           Terceiros
+        </th>
+        <th>
+          Autonomia
+        </th>
+        <th>
+          Saúde
+        </th>
+    </tr>
+
+    <tr>
+
+        <td>
+            @ViewBag.numero_estatisticas 
+        </td>
+        <td>
+            @ViewBag.numero_intervencoes_imediatas
+        </td>
+        <td>
+            @ViewBag.media_fome
+        </td>
+        <td>
+            @ViewBag.media_perigo
+        </td>
+        <td>
+            @ViewBag.media_esforco
+        </td>
+        <td>
+            @ViewBag.media_terceiros
+        </td>
+        <td>
+            @ViewBag.media_autonomia
+        </td>
+        <td>
+            @ViewBag.media_saude 
+        </td>
+    </tr>
+
+</table>

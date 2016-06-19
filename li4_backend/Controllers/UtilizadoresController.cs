@@ -11,16 +11,21 @@ namespace li4_backend.Controllers
     public class UtilizadoresController : Controller
     {
         li4_back_end_entities base_dados = new li4_back_end_entities();
-
         public ActionResult Index()
         {
+            ViewBag.user_admin = "1";
             return View( base_dados.Utilizadors.ToList() );
         }
-
         [HttpGet]
         public ActionResult Criar() {
             Utilizador novo_user = new Utilizador();
-            var maxValue = base_dados.Utilizadors.Max(x => x.id_utlizador);
+
+            var maxValue = 0;
+            if (base_dados.Estatisticas.Count() > 0)
+            {
+                maxValue = base_dados.Utilizadors.Max(x => x.id_utlizador);
+            }
+
             novo_user.id_utlizador = maxValue + 1;
             return View(novo_user);
       }

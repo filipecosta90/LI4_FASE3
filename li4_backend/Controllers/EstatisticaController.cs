@@ -9,8 +9,6 @@ namespace li4_backend.Controllers
 {
     public class EstatisticaController : Controller
     {
-
-
         li4_back_end_entities base_dados = new li4_back_end_entities();
 
         // GET: Estatistica
@@ -28,6 +26,7 @@ namespace li4_backend.Controllers
             {
                 ViewBag.id_user = (int)id;
             }
+            ViewBag.user_vol = "1";
             return View(base_dados.Estatisticas.ToList());
         }
 
@@ -42,10 +41,11 @@ namespace li4_backend.Controllers
                     ViewBag.id_user = (int)id;
                     Estatistica nova_estatistica = new Estatistica();
                     var maxValue = 0;
-                   if ( base_dados.Estatisticas.Count() > 0 ) { 
-                   maxValue = base_dados.Estatisticas.Max(x => x.id_estatistica);
+                    if (base_dados.Estatisticas.Count() > 0)
+                    {
+                        maxValue = base_dados.Estatisticas.Max(x => x.id_estatistica);
                     }
-                                    
+
                     nova_estatistica.id_estatistica = maxValue + 1;
                     nova_estatistica.utilizador = (int)id;
                     return View(nova_estatistica);
@@ -87,7 +87,7 @@ namespace li4_backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 base_dados.Entry(estatistica).State = System.Data.Entity.EntityState.Modified;
                 base_dados.SaveChanges();
                 return RedirectToAction("Index");

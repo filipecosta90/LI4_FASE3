@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="li4_back_endModel.LocalInteresse" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="li4_back_endModel.Localizacao" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="li4_back_endModel.Refugiado" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="li4_back_endModel.RegistoCampo" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="li4_back_endModel.RegistoCampo" Width="1.5" PointX="3.125" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="li4_back_endModel.Utilizador" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
         <AssociationConnector Association="li4_back_endModel.FK_Estatistica_Utilizador" ManuallyRouted="false" />
         <AssociationConnector Association="li4_back_endModel.FK_Evento_Utilizador" ManuallyRouted="false" />

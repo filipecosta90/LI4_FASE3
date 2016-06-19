@@ -176,8 +176,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EstatisticaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\GestaoEstatisticasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalInteresseController.cs" />
+    <Compile Include="Controllers\LocalIntervencaoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RefugiadoController.cs" />
     <Compile Include="Controllers\UtilizadoresController.cs" />
@@ -365,6 +367,8 @@
     <Content Include="Views\Estatistica\Editar.cshtml" />
     <Content Include="Views\Estatistica\Detalhe.cshtml" />
     <Content Include="Views\Estatistica\Eliminar.cshtml" />
+    <Content Include="Views\GestaoEstatisticas\Index.cshtml" />
+    <Content Include="Views\LocalIntervencao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

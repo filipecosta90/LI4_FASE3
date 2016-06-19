@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/themes/base/css")
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
 
@@ -309,32 +310,91 @@
                     marker_actual.setPosition(Latlng_actual);
                 });
             }
-
         }
         google.maps.event.addDomListener(window, 'load', mapa);
     </script>
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <ul class="nav navbar-nav">
+
+                <li>
+
+                    @{
+                        if (@ViewBag.user_admin == "1")
+                        {
+                            @Html.ActionLink("Refugee Assist", "IndexAdmin", "Home", new { id = @ViewBag.id_user, @class = "navbar-brand" }, null)
+
+                        }
+                        else
+                        {
+                            if (@ViewBag.user_vol == "1")
+                            {
+                                @Html.ActionLink("Refugee Assist", "IndexUser", "Home", new { id = @ViewBag.id_user, @class = "navbar-brand" }, null)
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Refugee Assist", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                            }
+                        }
+                    }
+                </li>
+
+                @{
+                    if (@ViewBag.user_admin == "1")
+                    {
+                        <li>@Html.ActionLink("Home", "IndexAdmin", "Home", new { id = @ViewBag.id_user }, null)</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Back-End
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="list-group-item">@Html.ActionLink("Consulta de Estatísticas", "Index", "GestaoEstatisticas", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Gestão de Locais de Intervenção", "Index", "LocalInteresse", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Gestão de Voluntários", "Index", "Utilizadores", new { id = @ViewBag.id_user }, null)</li>
+                            </ul>
+                        </li>
+
+
+                    }
+                    if (@ViewBag.user_vol == "1")
+                    {
+                        <li>@Html.ActionLink("Home", "IndexUser", "Home", new { id = @ViewBag.id_user }, null)</li>
+
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Front-End
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="list-group-item">@Html.ActionLink("Escolha do Local de Intervenção", "Index", "LocalIntervencao", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Cidadão em situação de refugiado", "Index", "Refugiado", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Eventos", "Index", "Evento", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Gestão/Registo Estatístico de dados de passagem de refugiados", "Index", "Estatistica", new { id = @ViewBag.id_user }, null)</li>
+                                <li class="list-group-item">@Html.ActionLink("Sincronização com Servidor Remoto", "Index", "Sincronizacao", new { id = @ViewBag.id_user }, null)</li>
+                            </ul>
+                        </li>
+
+
+                    }
+
+                }
+
+                @{
+                    if (@ViewBag.user_vol == "1" || @ViewBag.user_vol == "1")
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                }
+
+            </ul>
+
         </div>
+    </div>
     </div>
     <div class="container body-content">
         @RenderBody()

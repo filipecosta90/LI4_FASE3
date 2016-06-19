@@ -27,6 +27,7 @@ namespace li4_backend.Controllers
             else
             {
                 ViewBag.id_user = (int)id;
+                ViewBag.user_vol = "1";
             }
             return View(base_dados.Refugiadoes.ToList());
         }
@@ -40,7 +41,13 @@ namespace li4_backend.Controllers
                 {
                     ViewBag.id_user = (int)id;
                     Refugiado novo_refugiado = new Refugiado();
-                    var maxValue = base_dados.Refugiadoes.Max(x => x.id_refugiado);
+
+                    var maxValue = 0;
+                    if (base_dados.Estatisticas.Count() > 0)
+                    {
+                        maxValue = base_dados.Refugiadoes.Max(x => x.id_refugiado);
+                    }
+
                     novo_refugiado.id_refugiado = maxValue + 1;
                     novo_refugiado.utilizador = (int)id;
                     return View(novo_refugiado);
