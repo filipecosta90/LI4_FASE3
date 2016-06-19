@@ -40,6 +40,8 @@ namespace li4_backend.Controllers
                 {
                     ViewBag.id_user = (int)id;
                     Refugiado novo_refugiado = new Refugiado();
+                    var maxValue = base_dados.Refugiadoes.Max(x => x.id_refugiado);
+                    novo_refugiado.id_refugiado = maxValue + 1;
                     novo_refugiado.utilizador = (int)id;
                     return View(novo_refugiado);
                 }

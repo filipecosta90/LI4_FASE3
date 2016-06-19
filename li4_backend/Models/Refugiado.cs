@@ -12,6 +12,7 @@ namespace li4_backend.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Refugiado
     {
         [DisplayName("Id refugiado")]
@@ -23,12 +24,16 @@ namespace li4_backend.Models
         public int utilizador { get; set; }
 
         [DisplayName("Data nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> data_nascimento { get; set; }
         [DisplayName("Fotografia")]
         public byte[] foto { get; set; }
         [DisplayName("Informação adicional")]
         public string info_adicional { get; set; }
         [DisplayName("Data do registo")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime data_registo { get; set; }
         public string genero { get; set; }
         [DisplayName("Paradeiro conhecido?")]

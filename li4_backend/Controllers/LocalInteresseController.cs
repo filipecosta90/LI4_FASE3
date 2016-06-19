@@ -21,7 +21,10 @@ namespace li4_backend.Controllers
         [HttpGet]
         public ActionResult Criar()
         {
-            return View();
+            LocalInteresse novo_local = new LocalInteresse();
+            var maxValue = base_dados.LocalInteresses.Max(x => x.id_local_interesse);
+            novo_local.id_local_interesse = maxValue + 1;
+            return View(novo_local);
         }
 
         [HttpPost]

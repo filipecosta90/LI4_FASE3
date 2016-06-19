@@ -11,11 +11,13 @@ namespace li4_backend.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Estatistica
     {
         public int id_estatistica { get; set; }
         public int utilizador { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime data { get; set; }
         public int id_escala { get; set; }
         public byte intervencao_imediata { get; set; }

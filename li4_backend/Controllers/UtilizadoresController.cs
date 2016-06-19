@@ -19,8 +19,11 @@ namespace li4_backend.Controllers
 
         [HttpGet]
         public ActionResult Criar() {
-            return View();
-        }
+            Utilizador novo_user = new Utilizador();
+            var maxValue = base_dados.Utilizadors.Max(x => x.id_utlizador);
+            novo_user.id_utlizador = maxValue + 1;
+            return View(novo_user);
+      }
 
         [HttpPost]
         public ActionResult Criar(Utilizador novo_user) {

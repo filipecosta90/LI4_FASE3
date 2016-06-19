@@ -12,10 +12,14 @@ namespace li4_backend.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Evento
     {
         [DisplayName("Id Evento")]
+        
         public int id_evento { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayName("Data")]
         public System.DateTime data { get; set; }
         [DisplayName("Registado por")]

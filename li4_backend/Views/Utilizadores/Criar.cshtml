@@ -18,8 +18,7 @@ ViewBag.Title = "Criar";
   <div class="form-group">
     @Html.LabelFor(model => model.id_utlizador, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-      @Html.EditorFor(model => model.id_utlizador, new { htmlAttributes = new { @class = "form-control" } })
-      @Html.ValidationMessageFor(model => model.id_utlizador, "", new { @class = "text-danger" })
+        @Html.TextBoxFor(model => model.id_utlizador, new { @class = "form-control", disabled = "disabled" })
     </div>
   </div>
 

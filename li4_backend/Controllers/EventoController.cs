@@ -39,8 +39,10 @@ namespace li4_backend.Controllers
                 Utilizador user_bd = base_dados.Utilizadors.Find(id);
                 if (user_bd != null)
                 {
+                    var maxValue = base_dados.Eventoes.Max(x => x.id_evento);
                     ViewBag.id_user = (int)id;
                     Evento novo_evento = new Evento();
+                    novo_evento.id_evento = maxValue + 1;
                     novo_evento.utilizador = (int) id;
                     return View(novo_evento);
                 }
