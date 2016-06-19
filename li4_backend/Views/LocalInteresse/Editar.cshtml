@@ -19,6 +19,8 @@ ViewBag.Title = "Editar";
           @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
           <div class="col-md-offset-4">
             @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
+              @Html.HiddenFor(model => model.id_local_interesse)
+              @Html.ValidationMessageFor(model => model.data_registo, "", new { @class = "text-danger" })
           </div>
         </div>
 

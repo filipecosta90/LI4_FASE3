@@ -1,0 +1,172 @@
+﻿@model li4_backend.Models.Estatistica
+
+@{
+    ViewBag.Title = "Detalhe";
+}
+
+<h2>Detalhe</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-horizontal">
+        <h4>Estatistica</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_estatistica, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+
+                            @Html.TextBoxFor(model => model.id_estatistica, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.utilizador)
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.data, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.intervencao_imediata, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+
+                            @Html.TextBoxFor(model => model.intervencao_imediata, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.info_adicional, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.info_adicional, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <h4>Escalas estatísticas [1:10]</h4>
+                <p></p>
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.fome, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.fome, new { @class = "form-control", disabled = "disabled" })
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esforco, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.esforco, new { @class = "form-control", disabled = "disabled" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.perigo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.perigo, new { @class = "form-control", disabled = "disabled" })
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.autonomia, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.autonomia, new { @class = "form-control", disabled = "disabled" })
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.saude, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.saude, new { @class = "form-control", disabled = "disabled" })
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.terceiros, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.terceiros, new { @class = "form-control", disabled = "disabled" })
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h3>Localização do Local de registo da estatística</h3>
+        <p></p>
+        <div class="col-md-6">
+            <div class="container">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+
+                        @Html.TextBoxFor(model => model.latitude, new { @class = "form-control", disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+
+
+                        @Html.TextBoxFor(model => model.longitude, new { @class = "form-control", disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div id="map-li4-1" style="width: 100%; height: 480px; margin-bottom: 2px;   margin: 10px;"></div>
+
+    </div>
+
+
+}
+
+<div>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { id = Model.id_estatistica })
+        @Html.ActionLink("Voltar", "Index", "Evento")
+    </p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<li4_backend.Models.Estatistica>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Estatísticas adicionadas ao sistema pelo utilizador @ViewBag.id_user</h2>
+<p>
+    @Html.ActionLink("Adicionar Estatística", "Criar", new { id = @ViewBag.id_user })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_estatistica )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.intervencao_imediata)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esforco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.terceiros)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.autonomia)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.utilizador )
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.latitude )
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.longitude )
+        </th>
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_estatistica )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intervencao_imediata)
+        </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.saude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.perigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esforco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.terceiros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.autonomia)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.id_estatistica }) |
+            @Html.ActionLink("Detalhe", "Detalhe", new { id=item.id_estatistica }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.id_estatistica })
+        </td>
+    </tr>
+}
+
+</table>

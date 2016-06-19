@@ -185,9 +185,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Escala.cs">
-      <DependentUpon>li4_BD_Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Estatistica.cs">
       <DependentUpon>li4_BD_Context.tt</DependentUpon>
     </Compile>
@@ -221,6 +218,9 @@
       <DependentUpon>li4_BD_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegistoCampo.cs">
+      <DependentUpon>li4_BD_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>li4_BD_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utilizador.cs">
@@ -360,10 +360,14 @@
     <Content Include="Views\Refugiado\Detalhe.cshtml" />
     <Content Include="Views\Refugiado\Editar.cshtml" />
     <Content Include="Views\Refugiado\Eliminar.cshtml" />
+    <Content Include="Views\Estatistica\Index.cshtml" />
+    <Content Include="Views\Estatistica\Criar.cshtml" />
+    <Content Include="Views\Estatistica\Editar.cshtml" />
+    <Content Include="Views\Estatistica\Detalhe.cshtml" />
+    <Content Include="Views\Estatistica\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Estatistica\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

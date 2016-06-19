@@ -1,31 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="li4_back_endModelStoreContainer" CdmEntityContainer="li4_back_end_entities">
-    <EntitySetMapping Name="Escalas">
-      <EntityTypeMapping TypeName="li4_back_endModel.Escala">
-        <MappingFragment StoreEntitySet="Escala">
-          <ScalarProperty Name="id_escala" ColumnName="id_escala" />
-          <ScalarProperty Name="perigo" ColumnName="perigo" />
-          <ScalarProperty Name="confianca" ColumnName="confianca" />
-          <ScalarProperty Name="saude" ColumnName="saude" />
-          <ScalarProperty Name="autonomia" ColumnName="autonomia" />
-          <ScalarProperty Name="terceiros" ColumnName="terceiros" />
-          <ScalarProperty Name="fome" ColumnName="fome" />
-          <ScalarProperty Name="esforco" ColumnName="esforco" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Estatisticas">
       <EntityTypeMapping TypeName="li4_back_endModel.Estatistica">
         <MappingFragment StoreEntitySet="Estatistica">
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="saude" ColumnName="saude" />
+          <ScalarProperty Name="autonomia" ColumnName="autonomia" />
+          <ScalarProperty Name="terceiros" ColumnName="terceiros" />
+          <ScalarProperty Name="esforco" ColumnName="esforco" />
+          <ScalarProperty Name="perigo" ColumnName="perigo" />
+          <ScalarProperty Name="fome" ColumnName="fome" />
           <ScalarProperty Name="id_estatistica" ColumnName="id_estatistica" />
           <ScalarProperty Name="utilizador" ColumnName="utilizador" />
           <ScalarProperty Name="data" ColumnName="data" />
-          <ScalarProperty Name="id_escala" ColumnName="id_escala" />
           <ScalarProperty Name="intervencao_imediata" ColumnName="intervencao_imediata" />
           <ScalarProperty Name="info_adicional" ColumnName="info_adicional" />
-          <ScalarProperty Name="localizacao_latitude" ColumnName="localizacao_latitude" />
-          <ScalarProperty Name="localizacao_longitude" ColumnName="localizacao_longitude" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -121,5 +112,16 @@
         <ScalarProperty Name="idRegistoCampo" ColumnName="RegistoCampo_idRegistoCampo" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="li4_back_endModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

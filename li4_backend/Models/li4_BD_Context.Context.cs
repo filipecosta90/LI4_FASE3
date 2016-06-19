@@ -25,7 +25,6 @@ namespace li4_backend.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Escala> Escalas { get; set; }
         public virtual DbSet<Estatistica> Estatisticas { get; set; }
         public virtual DbSet<Evento> Eventoes { get; set; }
         public virtual DbSet<LocalInteresse> LocalInteresses { get; set; }
@@ -33,5 +32,6 @@ namespace li4_backend.Models
         public virtual DbSet<Refugiado> Refugiadoes { get; set; }
         public virtual DbSet<RegistoCampo> RegistoCampoes { get; set; }
         public virtual DbSet<Utilizador> Utilizadors { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

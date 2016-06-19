@@ -31,6 +31,7 @@ namespace li4_backend.Controllers
             return View(base_dados.Estatisticas.ToList());
         }
 
+        [HttpGet]
         public ActionResult Criar(int? id)
         {
             if (id != null)
@@ -40,7 +41,11 @@ namespace li4_backend.Controllers
                 {
                     ViewBag.id_user = (int)id;
                     Estatistica nova_estatistica = new Estatistica();
-                    var maxValue = base_dados.Estatisticas.Max(x => x.id_estatistica);
+                    var maxValue = 0;
+                   if ( base_dados.Estatisticas.Count() > 0 ) { 
+                   maxValue = base_dados.Estatisticas.Max(x => x.id_estatistica);
+                    }
+                                    
                     nova_estatistica.id_estatistica = maxValue + 1;
                     nova_estatistica.utilizador = (int)id;
                     return View(nova_estatistica);
@@ -78,7 +83,7 @@ namespace li4_backend.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(Estatistica estatistica)
+        public ActionResult Editar(int? id, Estatistica estatistica)
         {
             if (ModelState.IsValid)
             {

@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="li4_back_endModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Escala">
-    <Key>
-      <PropertyRef Name="id_escala" />
-    </Key>
-    <Property Name="id_escala" Type="Int32" Nullable="false" />
-    <Property Name="perigo" Type="Int32" Nullable="false" />
-    <Property Name="confianca" Type="Int32" Nullable="false" />
-    <Property Name="saude" Type="Int32" Nullable="false" />
-    <Property Name="autonomia" Type="Int32" Nullable="false" />
-    <Property Name="terceiros" Type="Int32" Nullable="false" />
-    <Property Name="fome" Type="Int32" />
-    <Property Name="esforco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Estatisticas" Relationship="Self.FK_Estatistica_Escala" FromRole="Escala" ToRole="Estatistica" />
-  </EntityType>
   <EntityType Name="Estatistica">
     <Key>
       <PropertyRef Name="id_estatistica" />
@@ -21,13 +7,17 @@
     <Property Name="id_estatistica" Type="Int32" Nullable="false" />
     <Property Name="utilizador" Type="Int32" Nullable="false" />
     <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="id_escala" Type="Int32" Nullable="false" />
     <Property Name="intervencao_imediata" Type="Byte" Nullable="false" />
     <Property Name="info_adicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="localizacao_latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="localizacao_longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Escala" Relationship="Self.FK_Estatistica_Escala" FromRole="Estatistica" ToRole="Escala" />
     <NavigationProperty Name="Utilizador1" Relationship="Self.FK_Estatistica_Utilizador" FromRole="Estatistica" ToRole="Utilizador" />
+    <Property Name="fome" Type="Int32" />
+    <Property Name="perigo" Type="Int32" />
+    <Property Name="esforco" Type="Int32" />
+    <Property Name="terceiros" Type="Int32" />
+    <Property Name="autonomia" Type="Int32" />
+    <Property Name="saude" Type="Int32" />
+    <Property Name="latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Evento">
     <Key>
@@ -108,18 +98,6 @@
     <NavigationProperty Name="Refugiadoes" Relationship="Self.FK_Refugiado_Utilizador" FromRole="Utilizador" ToRole="Refugiado" />
     <NavigationProperty Name="LocalInteresses" Relationship="Self.local_interesse" FromRole="Utilizador" ToRole="LocalInteresse" />
   </EntityType>
-  <Association Name="FK_Estatistica_Escala">
-    <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
-    <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Escala">
-        <PropertyRef Name="id_escala" />
-      </Principal>
-      <Dependent Role="Estatistica">
-        <PropertyRef Name="id_escala" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Estatistica_Utilizador">
     <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
     <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
@@ -165,7 +143,6 @@
     <End Role="RegistoCampo" Type="Self.RegistoCampo" Multiplicity="*" />
   </Association>
   <EntityContainer Name="li4_back_end_entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Escalas" EntityType="Self.Escala" />
     <EntitySet Name="Estatisticas" EntityType="Self.Estatistica" />
     <EntitySet Name="Eventoes" EntityType="Self.Evento" />
     <EntitySet Name="LocalInteresses" EntityType="Self.LocalInteresse" />
@@ -173,10 +150,6 @@
     <EntitySet Name="Refugiadoes" EntityType="Self.Refugiado" />
     <EntitySet Name="RegistoCampoes" EntityType="Self.RegistoCampo" />
     <EntitySet Name="Utilizadors" EntityType="Self.Utilizador" />
-    <AssociationSet Name="FK_Estatistica_Escala" Association="Self.FK_Estatistica_Escala">
-      <End Role="Escala" EntitySet="Escalas" />
-      <End Role="Estatistica" EntitySet="Estatisticas" />
-    </AssociationSet>
     <AssociationSet Name="FK_Estatistica_Utilizador" Association="Self.FK_Estatistica_Utilizador">
       <End Role="Utilizador" EntitySet="Utilizadors" />
       <End Role="Estatistica" EntitySet="Estatisticas" />
@@ -197,5 +170,16 @@
       <End Role="LocalInteresse" EntitySet="LocalInteresses" />
       <End Role="RegistoCampo" EntitySet="RegistoCampoes" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="li4_back_endModel.sysdiagram" />
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

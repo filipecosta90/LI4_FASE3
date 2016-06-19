@@ -1,18 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="li4_back_endModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Escala">
-    <Key>
-      <PropertyRef Name="id_escala" />
-    </Key>
-    <Property Name="id_escala" Type="int" Nullable="false" />
-    <Property Name="perigo" Type="int" Nullable="false" />
-    <Property Name="confianca" Type="int" Nullable="false" />
-    <Property Name="saude" Type="int" Nullable="false" />
-    <Property Name="autonomia" Type="int" Nullable="false" />
-    <Property Name="terceiros" Type="int" Nullable="false" />
-    <Property Name="fome" Type="int" />
-    <Property Name="esforco" Type="varchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Estatistica">
     <Key>
       <PropertyRef Name="id_estatistica" />
@@ -20,11 +7,16 @@
     <Property Name="id_estatistica" Type="int" Nullable="false" />
     <Property Name="utilizador" Type="int" Nullable="false" />
     <Property Name="data" Type="datetime" Nullable="false" />
-    <Property Name="id_escala" Type="int" Nullable="false" />
     <Property Name="intervencao_imediata" Type="tinyint" Nullable="false" />
     <Property Name="info_adicional" Type="varchar" MaxLength="50" />
-    <Property Name="localizacao_latitude" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="localizacao_longitude" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="latitude" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="longitude" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fome" Type="int" />
+    <Property Name="perigo" Type="int" />
+    <Property Name="esforco" Type="int" />
+    <Property Name="terceiros" Type="int" />
+    <Property Name="autonomia" Type="int" />
+    <Property Name="saude" Type="int" />
   </EntityType>
   <EntityType Name="Evento">
     <Key>
@@ -103,6 +95,16 @@
     <Property Name="idRegistoCampo" Type="int" Nullable="false" />
     <Property Name="data" Type="date" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="Utilizador">
     <Key>
       <PropertyRef Name="id_utlizador" />
@@ -112,18 +114,6 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="RegistoCampo_idRegistoCampo" Type="int" />
   </EntityType>
-  <Association Name="FK_Estatistica_Escala">
-    <End Role="Escala" Type="Self.Escala" Multiplicity="1" />
-    <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Escala">
-        <PropertyRef Name="id_escala" />
-      </Principal>
-      <Dependent Role="Estatistica">
-        <PropertyRef Name="id_escala" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Estatistica_Utilizador">
     <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
     <End Role="Estatistica" Type="Self.Estatistica" Multiplicity="*" />
@@ -209,7 +199,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="li4_back_endModelStoreContainer">
-    <EntitySet Name="Escala" EntityType="Self.Escala" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estatistica" EntityType="Self.Estatistica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="local_interesse" EntityType="Self.local_interesse" Schema="dbo" store:Type="Tables" />
@@ -218,11 +207,8 @@
     <EntitySet Name="Localizacao" EntityType="Self.Localizacao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Refugiado" EntityType="Self.Refugiado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegistoCampo" EntityType="Self.RegistoCampo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Utilizador" EntityType="Self.Utilizador" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Estatistica_Escala" Association="Self.FK_Estatistica_Escala">
-      <End Role="Escala" EntitySet="Escala" />
-      <End Role="Estatistica" EntitySet="Estatistica" />
-    </AssociationSet>
     <AssociationSet Name="FK_Estatistica_Utilizador" Association="Self.FK_Estatistica_Utilizador">
       <End Role="Utilizador" EntitySet="Utilizador" />
       <End Role="Estatistica" EntitySet="Estatistica" />

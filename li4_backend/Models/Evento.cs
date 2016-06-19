@@ -15,8 +15,6 @@ namespace li4_backend.Models
     using System.ComponentModel.DataAnnotations;
     public partial class Evento
     {
-        [DisplayName("Id Evento")]
-        
         public int id_evento { get; set; }
         [Required(ErrorMessage = "Por favor introduza a data do evento")]
         [DataType(DataType.Date)]
@@ -38,7 +36,7 @@ namespace li4_backend.Models
         public string localizacao_latitude { get; set; }
         [DisplayName("Longitude")]
         public string localizacao_longitude { get; set; }
-    
+
         public virtual Utilizador Utilizador1 { get; set; }
     }
 }

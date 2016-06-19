@@ -49,7 +49,7 @@ namespace li4_backend.Models
         public string localizacao_actual_latitude { get; set; }
         [DisplayName("Longitude")]
         public string localizacao_actual_longitude { get; set; }
-    
+
         public virtual Utilizador Utilizador1 { get; set; }
     }
 }

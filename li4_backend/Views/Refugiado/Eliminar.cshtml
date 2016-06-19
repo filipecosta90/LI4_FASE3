@@ -23,6 +23,9 @@
                         @Html.LabelFor(model => model.id_refugiado, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-offset-4">
                             @Html.TextBoxFor(model => model.id_refugiado, new { @class = "form-control", disabled = "disabled" })
+                            @Html.HiddenFor(model => model.id_refugiado)
+
+
                         </div>
                     </div>
 
