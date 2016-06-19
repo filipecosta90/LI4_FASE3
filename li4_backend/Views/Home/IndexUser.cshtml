@@ -1,27 +1,27 @@
 ﻿@model li4_backend.Models.Utilizador
 
 @{
-ViewBag.Title = "IndexUser";
+    ViewBag.Title = "IndexUser";
 }
 
 <h2>Modo Voluntário ( utilizador @Html.DisplayFor(model => model.id_utlizador) )</h2>
 
 <div class="row">
-  <p>Seleccione uma das possíveis seções, revendo as suas aplicações práticas:</p>
-  <div>
-    <ul class="list-group">
-      <li class="list-group-item">@Html.ActionLink("Escolha do Local de Intervenção", "Index", "LocalIntervencao", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Eventos", "Index", "Evento", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Gestão/Registo de desconhecimento de paradeiro de elemento familiar", "Index", "Paradeiro", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Gestão/Registo Estatístico do local de origem/passagem/destino do refugiado", "Index", "Estatistica", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Cidadão em situação de refugiado", "Index", "Refugiado", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Sincronização com Servidor Remoto", "Index", "Sincronizacao", new { id = Model.id_utlizador }, null)</li>
-      <li class="list-group-item">@Html.ActionLink("Logout", "Index")</li>
-    </ul>
-    <ul class="pager"></ul>
-  </div>
+    <p>Seleccione uma das possíveis seções, revendo as suas aplicações práticas:</p>
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item">@Html.ActionLink("Escolha do Local de Intervenção", "Index", "LocalIntervencao", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Eventos", "Index", "Evento", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Gestão/Registo de desconhecimento de paradeiro de elemento familiar", "Index", "Paradeiro", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Gestão/Registo Estatístico do local de origem/passagem/destino do refugiado", "Index", "Estatistica", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Gestão/Registo de Cidadão em situação de refugiado", "Index", "Refugiado", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Sincronização com Servidor Remoto", "Index", "Sincronizacao", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Logout", "Index")</li>
+        </ul>
+        <ul class="pager"></ul>
+    </div>
 </div>
 
 @section Scripts {
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 }

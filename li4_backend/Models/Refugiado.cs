@@ -11,22 +11,37 @@ namespace li4_backend.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
     public partial class Refugiado
     {
+        [DisplayName("Id refugiado")]
         public int id_refugiado { get; set; }
+        [DisplayName("Nome")]
         public string nome { get; set; }
+
+        [DisplayName("Registado por")]
         public int utilizador { get; set; }
+
+        [DisplayName("Data nascimento")]
         public Nullable<System.DateTime> data_nascimento { get; set; }
-        public string local_registo_latitude { get; set; }
+        [DisplayName("Fotografia")]
         public byte[] foto { get; set; }
+        [DisplayName("Informação adicional")]
         public string info_adicional { get; set; }
+        [DisplayName("Data do registo")]
         public System.DateTime data_registo { get; set; }
         public string genero { get; set; }
+        [DisplayName("Paradeiro conhecido?")]
         public byte paradeiro_conhecido { get; set; }
+        [DisplayName("Mensagem de voz")]
         public byte[] msg_voz { get; set; }
+        [DisplayName("Latitude")]
+        public string local_registo_latitude { get; set; }
+        [DisplayName("Longitude")]
         public string local_registo_longitude { get; set; }
+        [DisplayName("Latitude")]
         public string localizacao_actual_latitude { get; set; }
+        [DisplayName("Longitude")]
         public string localizacao_actual_longitude { get; set; }
     
         public virtual Utilizador Utilizador1 { get; set; }

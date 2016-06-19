@@ -1,0 +1,200 @@
+﻿@model li4_backend.Models.Refugiado
+
+@{
+    ViewBag.Title = "Criar";
+}
+
+<h2>Criar</h2>
+
+@using (Html.BeginForm("Criar", "Refugiado", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Evento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_refugiado, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.id_refugiado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.id_refugiado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.data_registo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.data_registo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.HiddenFor(model => model.utilizador)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data_nascimento, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.data_nascimento, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.genero, htmlAttributes: new { @class = "control-label col-md-4" })
+
+
+                        <div class="col-md-offset-4">
+                            @Html.DropDownListFor(
+            model => model.genero,
+            new SelectList(
+            new List<Object>{
+              new { value = "Masculino" , text = "Masculino"  },
+              new { value = "Feminino" , text = "Feminino" }
+
+              }, "value", "text", 1
+              ), new { @class = "form-control" }
+              )
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.info_adicional, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.info_adicional, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.info_adicional, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.paradeiro_conhecido, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-md-offset-4">
+                            @Html.DropDownListFor(
+            model => model.paradeiro_conhecido,
+            new SelectList(
+            new List<Object>{
+              new { value = "0" , text = "Não"  },
+              new { value = "1" , text = "Sim" }
+
+              }, "value", "text", "Sim"
+              ), new { @class = "form-control" }
+              )
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.msg_voz, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            <input type="file" id="msg_voz" name="upload_msg_voz" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            <input type="file" id="foto" name="upload" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Local de Registo do Refugiado</h3>
+
+                <div class="container">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.local_registo_latitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.local_registo_latitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.local_registo_latitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.local_registo_longitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.local_registo_longitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.local_registo_longitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+                    <div id="map-li4-local-registo-refugiado" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
+               
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Local Actual do Refugiado</h3>
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.localizacao_actual_latitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.localizacao_actual_latitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.localizacao_actual_latitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.localizacao_actual_longitude, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.localizacao_actual_longitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.localizacao_actual_longitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+                    <div id="map-li4-local-actual-refugiado" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="Criar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+                <div>
+                    @Html.ActionLink("Voltar", "Index")
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }

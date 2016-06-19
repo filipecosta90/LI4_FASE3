@@ -5,29 +5,22 @@
 }
 
 <h2>Refugiados adicionados ao sistema pelo utilizador @ViewBag.id_user</h2>
-
 <p>
-    @Html.ActionLink("Adicionar Refugiado", "Create")
+    @Html.ActionLink("Adicionar Refugiado", "Criar", new { id = @ViewBag.id_user })
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_refugiado)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.nome)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.data_nascimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.local_registo_latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.info_adicional)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data_registo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.genero)
@@ -36,70 +29,47 @@
             @Html.DisplayNameFor(model => model.paradeiro_conhecido)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.msg_voz)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.local_registo_longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.localizacao_actual_latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.localizacao_actual_longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Utilizador1.tipo)
+            @Html.DisplayNameFor(model => model.data_registo)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_nascimento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.local_registo_latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.info_adicional)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_registo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.paradeiro_conhecido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.msg_voz)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.local_registo_longitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.localizacao_actual_latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.localizacao_actual_longitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Utilizador1.tipo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_refugiado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_refugiado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_refugiado })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.foto != null)
+                {
+
+                    <div class="thumbnail">
+                        <img src="@Url.Action("RenderImage", new { id = item.id_refugiado})" alt="fotografia" />
+                    </div>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_refugiado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_nascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paradeiro_conhecido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_registo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.id_refugiado }) |
+                @Html.ActionLink("Detalhe", "Detalhe", new { id = item.id_refugiado }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.id_refugiado })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -156,9 +156,6 @@ namespace li4_backend.Controllers
             return View(evento);
         }
 
-
-        
-
         public async Task<ActionResult> RenderImage(int id)
         {
             Evento evento =  base_dados.Eventoes.Find(id);

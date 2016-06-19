@@ -11,7 +11,7 @@ namespace li4_backend.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
     public partial class Utilizador
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +22,12 @@ namespace li4_backend.Models
             this.Refugiadoes = new HashSet<Refugiado>();
             this.LocalInteresses = new HashSet<LocalInteresse>();
         }
-    
+
+        [DisplayName("Id utilizador")]
         public int id_utlizador { get; set; }
+        [DisplayName("Tipo")]
         public string tipo { get; set; }
+        [DisplayName("Password")]
         public string password { get; set; }
         public Nullable<int> RegistoCampo_idRegistoCampo { get; set; }
     

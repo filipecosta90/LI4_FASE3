@@ -1,25 +1,25 @@
 ﻿@model li4_backend.Models.Utilizador
 
 @{
-ViewBag.Title = "IndexAdmin";
+    ViewBag.Title = "IndexAdmin";
 }
 
 <h2>Modo Administrador ( utilizador @Html.DisplayFor(model => model.id_utlizador) )</h2>
 
 <div class="row">
-  <p>Seleccione uma das possíveis seções, revendo as suas aplicações práticas:</p>
-  <div>
+    <p>Seleccione uma das possíveis seções, revendo as suas aplicações práticas:</p>
+    <div>
 
-    <ul class="list-group">
-      <li class="list-group-item">@Html.ActionLink("Consulta de Estatísticas", "Index", "Estatisticas", new RouteValueDictionary ( new { id = Model.id_utlizador }))</li>
-      <li class="list-group-item">@Html.ActionLink("Gestão de Locais de Intervenção", "Index", "LocalInteresse", new { id = Model.id_utlizador }, null) </li>
-      <li class="list-group-item">@Html.ActionLink("Gestão de Voluntários", "Index", "Utilizadores", new { id = Model.id_utlizador }, null )</li>
-      <li class="list-group-item">@Html.ActionLink("Logout", "Index")</li>
-    </ul>
-    <ul class="pager"></ul>
-  </div>
+        <ul class="list-group">
+            <li class="list-group-item">@Html.ActionLink("Consulta de Estatísticas", "Index", "Estatisticas", new RouteValueDictionary(new { id = Model.id_utlizador }))</li>
+            <li class="list-group-item">@Html.ActionLink("Gestão de Locais de Intervenção", "Index", "LocalInteresse", new { id = Model.id_utlizador }, null) </li>
+            <li class="list-group-item">@Html.ActionLink("Gestão de Voluntários", "Index", "Utilizadores", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Logout", "Index")</li>
+        </ul>
+        <ul class="pager"></ul>
+    </div>
 </div>
 
 @section Scripts {
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 }

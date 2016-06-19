@@ -313,6 +313,10 @@
     <Content Include="Views\Evento\Editar.cshtml" />
     <Content Include="Views\Evento\Eliminar.cshtml" />
     <Content Include="Views\Refugiado\Index.cshtml" />
+    <Content Include="Views\Refugiado\Criar.cshtml" />
+    <Content Include="Views\Refugiado\Detalhe.cshtml" />
+    <Content Include="Views\Refugiado\Editar.cshtml" />
+    <Content Include="Views\Refugiado\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
