@@ -41,11 +41,10 @@ namespace li4_backend.Controllers
                 RegistoCampo novo_registo_campo = new RegistoCampo();
 
                 var maxValue = 0;
-                if (base_dados.Estatisticas.Count() > 0)
+                if (base_dados.RegistoCampoes.Count() > 0)
                 {
                     maxValue = base_dados.RegistoCampoes.Max(x => x.idRegistoCampo);
                 }
-
                 novo_registo_campo.idRegistoCampo = maxValue + 1;
                 novo_registo_campo.data = DateTime.Now;
                 Utilizador user_bd = base_dados.Utilizadors.Find(int.Parse(Request.Cookies["userid"].Value));
@@ -56,10 +55,10 @@ namespace li4_backend.Controllers
                 base_dados.SaveChanges();
                 base_dados.Entry(user_bd).State = System.Data.Entity.EntityState.Modified;
                 base_dados.SaveChanges();
-                base_dados.LocalInteresses.Add(local);
+                base_dados.Entry(local).State = System.Data.Entity.EntityState.Modified;
                 base_dados.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexUser", "Home", new { id = ViewBag.id_user });
         }
 
     }

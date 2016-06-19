@@ -41,7 +41,7 @@ namespace li4_backend.Controllers
                 if (user_bd != null)
                 {
                     var maxValue = 0;
-                    if (base_dados.Estatisticas.Count() > 0)
+                    if (base_dados.Eventoes.Count() > 0)
                     {
                         maxValue = base_dados.Eventoes.Max(x => x.id_evento);
                     }

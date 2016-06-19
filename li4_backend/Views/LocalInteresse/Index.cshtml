@@ -6,6 +6,51 @@ ViewBag.Title = "Index";
 
 <h2>Index</h2>
 
+
+<h2>Localização de todos os locais de interesse</h2>
+<h4></h4>
+<div id="map_canvas" style="width:100%; height:300px;"></div>
+<script type="text/javascript">
+
+    var markersArray = [];
+    function initialize() {
+        var latlng = new google.maps.LatLng(50, 20);
+        var options = {
+            zoom: 3, center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById
+			("map_canvas"), options);
+
+        @foreach(var item in Model)
+        {
+            <text>
+        console.log(@item.latitude)
+        console.log(@item.longitude)
+
+        markersArray.push(new google.maps.Marker({
+            draggable: false,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng('@item.latitude', '@item.longitude', false),
+            url: '@Url.Action("Detalhe", "LocalInteresse", new { id = item.id_local_interesse })',
+            title: 'Id local de interesse: '+'@item.id_local_interesse',
+            map: map
+        }));
+        console.log(markersArray.length);
+        google.maps.event.addListener(markersArray[markersArray.length - 1], 'click', function () {
+            window.location.href = '@Url.Action("Detalhe", "LocalInteresse", new { id = item.id_local_interesse })';
+        });
+
+        </text>
+        }
+    }
+    $(function () {
+        initialize();
+    });
+
+</script>
+
+
 <p>
 @Html.ActionLink("Adicionar Local Interesse", "Criar")
 </p>
@@ -65,4 +110,10 @@ ViewBag.Title = "Index";
     </td>
   </tr>
   }
+
+
 </table>
+
+<p>
+    @Html.ActionLink("Adicionar Local Interesse", "Criar")
+</p>

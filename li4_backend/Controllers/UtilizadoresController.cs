@@ -21,7 +21,7 @@ namespace li4_backend.Controllers
             Utilizador novo_user = new Utilizador();
 
             var maxValue = 0;
-            if (base_dados.Estatisticas.Count() > 0)
+            if (base_dados.Utilizadors.Count() > 0)
             {
                 maxValue = base_dados.Utilizadors.Max(x => x.id_utlizador);
             }

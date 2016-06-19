@@ -11,7 +11,8 @@ namespace li4_backend.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Utilizador
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +23,18 @@ namespace li4_backend.Models
             this.Refugiadoes = new HashSet<Refugiado>();
             this.LocalInteresses = new HashSet<LocalInteresse>();
         }
-    
+
+        [Required(ErrorMessage = "Por favor introduza o id do utilizador")]
+        [DisplayName("Id utilizador")]
         public int id_utlizador { get; set; }
+        [DisplayName("Tipo")]
+        [Required(ErrorMessage = "Por favor introduza a password do utilizador")]
         public string tipo { get; set; }
+        [DataType(DataType.Password)]
+        [DisplayName("Password")]
         public string password { get; set; }
         public Nullable<int> RegistoCampo_idRegistoCampo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estatistica> Estatisticas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

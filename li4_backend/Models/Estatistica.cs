@@ -11,21 +11,41 @@ namespace li4_backend.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Estatistica
     {
+        [Required(ErrorMessage = "Por favor introduza a identificação da estatística")]
+        [DisplayName("Id da estatística")]
         public int id_estatistica { get; set; }
+        [Required(ErrorMessage = "Por favor introduza o id do utilizador")]
+        [DisplayName("Id do utilizador do registo")]
         public int utilizador { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a data da estatistica")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayName("Data")]
         public System.DateTime data { get; set; }
+        [Required(ErrorMessage = "Por favor introduza se é necessário intervenção imediata")]
+        [DisplayName("Necessária intervenção imediata?")]
         public byte intervencao_imediata { get; set; }
+        [DisplayName("Informação adicional")]
         public string info_adicional { get; set; }
+        [DisplayName("Fome (opinião ref.)")]
         public Nullable<int> fome { get; set; }
+        [DisplayName("Perigo (opinião ref.)")]
         public Nullable<int> perigo { get; set; }
+        [DisplayName("Esforço (opinião ref.)")]
         public Nullable<int> esforco { get; set; }
-        public Nullable<int> terceiros { get; set; }
-        public Nullable<int> autonomia { get; set; }
+        [DisplayName("Estado de saúde (opinião vol.)")]
         public Nullable<int> saude { get; set; }
+        [DisplayName("Perigo para terceiros (opinião vol.)")]
+        public Nullable<int> terceiros { get; set; }
+        [DisplayName("Capacidade de autonomia (opinião vol.)")]
+        public Nullable<int> autonomia { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a latitude do local da estatística, ou carrege no local no mapa")]
         public string latitude { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a longitude do local da estatística, ou carrege no local no mapa")]
         public string longitude { get; set; }
     
         public virtual Utilizador Utilizador1 { get; set; }

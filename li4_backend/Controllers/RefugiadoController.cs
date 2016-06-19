@@ -43,7 +43,7 @@ namespace li4_backend.Controllers
                     Refugiado novo_refugiado = new Refugiado();
 
                     var maxValue = 0;
-                    if (base_dados.Estatisticas.Count() > 0)
+                    if (base_dados.Refugiadoes.Count() > 0)
                     {
                         maxValue = base_dados.Refugiadoes.Max(x => x.id_refugiado);
                     }

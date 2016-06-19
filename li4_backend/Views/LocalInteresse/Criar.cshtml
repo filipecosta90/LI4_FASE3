@@ -1,98 +1,98 @@
 ﻿@model li4_backend.Models.LocalInteresse
 
 @{
-ViewBag.Title = "Criar";
+    ViewBag.Title = "Criar";
 }
 
 <h2>Criar</h2>
 
 @using (Html.BeginForm("Criar"))
 {
-<div class="form-horizontal">
-  <h4>LocalInteresse</h4>
-  <hr />
-  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-  <div class="row">
-    <div class="col-md-6">
-      <div class="container">
-        <div class="form-group">
-          @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-              @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
+    <div class="form-horizontal">
+        <h4>LocalInteresse</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_local_interesse, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.TextBoxFor(model => model.id_local_interesse, new { @class = "form-control", disabled = "disabled" })
+                            @Html.HiddenFor(model => model.id_local_interesse)
 
+                        </div>
+                    </div>
 
-          </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.data_registo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.data_registo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.data_registo, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.data_registo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.data_registo, "", new { @class = "text-danger" })
-          </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.data_intervencao, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.data_intervencao, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.data_intervencao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.data_intervencao, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.data_intervencao, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.data_intervencao, "", new { @class = "text-danger" })
-          </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.inf_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.inf_adicional, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.inf_adicional, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.inf_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.inf_adicional, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.inf_adicional, "", new { @class = "text-danger" })
-          </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.numero_voluntarios, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.numero_voluntarios, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.numero_voluntarios, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.numero_voluntarios, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.numero_voluntarios, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.numero_voluntarios, "", new { @class = "text-danger" })
-          </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.latitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.latitude, "", new { @class = "text-danger" })
-          </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-offset-4">
+                            @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-4">
+                            <input type="submit" value="Criar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Localização do Local de Intervenção</h3>
+                <div id="map-li4-1" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
+            </div>
         </div>
-
-        <div class="form-group">
-          @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-offset-4">
-            @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-offset-4">
-            <input type="submit" value="Criar" class="btn btn-default" />
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="col-md-6">
-      <h3 class="text-center">Localização do Local de Intervenção</h3>
-      <div id="map-li4-1" style="width: 100%; height: 480px; margin-bottom: 2px;"></div>
-    </div>
-  </div>
-</div>
 }
 
 <div class="row">
 
-  <div>
-    @Html.ActionLink("Voltar", "Index")
-  </div>
+    <div>
+        @Html.ActionLink("Voltar", "Index")
+    </div>
 
-  @section Scripts {
-  @Scripts.Render("~/bundles/jqueryval")
-  }
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </div>

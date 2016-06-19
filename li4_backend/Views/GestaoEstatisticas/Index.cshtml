@@ -24,21 +24,18 @@
             <text>
         console.log(@item.latitude)
         console.log(@item.longitude)
-        var url_estatistica = '@Url.Action("Detalhe", "Estatistica", new { id = item.id_estatistica })'
-        console.log(url_estatistica)
-
 
         markersArray.push(new google.maps.Marker({
             draggable: false,
             animation: google.maps.Animation.DROP,
             position: new google.maps.LatLng('@item.latitude', '@item.longitude', false),
-            url: url_estatistica,
-            title: 'Whatever title',
+            url: '@Url.Action("Detalhe", "Estatistica", new { id = item.id_estatistica })',
+            title: 'Id estatistica: ' + '@item.id_estatistica',
             map: map
         }));
         console.log(markersArray.length);
         google.maps.event.addListener(markersArray[markersArray.length - 1], 'click', function () {
-            window.location.href = url_estatistica;
+            window.location.href = '@Url.Action("Detalhe", "Estatistica", new { id = item.id_estatistica })';
         });
 
         </text>
