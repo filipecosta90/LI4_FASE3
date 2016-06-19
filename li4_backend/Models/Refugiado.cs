@@ -17,23 +17,24 @@ namespace li4_backend.Models
     {
         [DisplayName("Id refugiado")]
         public int id_refugiado { get; set; }
+        [Required(ErrorMessage = "Por favor introduza o nome do refugiado")]
         [DisplayName("Nome")]
         public string nome { get; set; }
 
         [DisplayName("Registado por")]
         public int utilizador { get; set; }
-
         [DisplayName("Data nascimento")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public Nullable<System.DateTime> data_nascimento { get; set; }
         [DisplayName("Fotografia")]
         public byte[] foto { get; set; }
         [DisplayName("Informação adicional")]
         public string info_adicional { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a data do registo")]
         [DisplayName("Data do registo")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public System.DateTime data_registo { get; set; }
         public string genero { get; set; }
         [DisplayName("Paradeiro conhecido?")]

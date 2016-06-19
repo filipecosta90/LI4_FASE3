@@ -24,10 +24,12 @@ namespace li4_backend.Models
 
         [DisplayName("Id do local de interesse")]
         public int id_local_interesse { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a data do registo")]
         [DisplayName("Data do registo")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime data_registo { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a data para intervenção")]
         [DisplayName("Data para intervenção")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

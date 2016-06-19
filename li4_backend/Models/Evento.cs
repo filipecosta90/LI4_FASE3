@@ -18,6 +18,7 @@ namespace li4_backend.Models
         [DisplayName("Id Evento")]
         
         public int id_evento { get; set; }
+        [Required(ErrorMessage = "Por favor introduza a data do evento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayName("Data")]

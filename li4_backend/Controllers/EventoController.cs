@@ -101,6 +101,8 @@ namespace li4_backend.Controllers
                 base_dados.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+
             return View(evento);
         }
 

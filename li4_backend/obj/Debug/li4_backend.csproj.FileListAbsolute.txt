@@ -16,6 +16,7 @@ C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\l
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Antlr3.Runtime.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\EntityFramework.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\EntityFramework.SqlServer.dll
+C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\JQueryUIHelpers.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -40,6 +41,7 @@ C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\S
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\System.Web.WebPages.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\System.Web.WebPages.Razor.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\WebGrease.dll
+C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\JQueryUIHelpers.xml
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\System.Web.Helpers.xml
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\System.Web.Mvc.xml
@@ -66,5 +68,3 @@ C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\M
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\obj\Debug\li4_backend.dll
 C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\obj\Debug\li4_backend.pdb
-C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\JQueryUIHelpers.dll
-C:\Users\li4\documents\visual studio 2015\Projects\li4_backend\li4_backend\bin\JQueryUIHelpers.xml
