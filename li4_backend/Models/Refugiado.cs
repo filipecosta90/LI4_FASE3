@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
+
 namespace li4_backend.Models
 {
     using System;
@@ -51,5 +53,7 @@ namespace li4_backend.Models
         public string localizacao_actual_longitude { get; set; }
 
         public virtual Utilizador Utilizador1 { get; set; }
+
+
     }
 }

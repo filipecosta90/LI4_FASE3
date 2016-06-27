@@ -14,6 +14,7 @@
             <li class="list-group-item">@Html.ActionLink("Consulta de Estatísticas", "Index", "GestaoEstatisticas", new RouteValueDictionary(new { id = Model.id_utlizador }), null)</li>
             <li class="list-group-item">@Html.ActionLink("Gestão de Locais de Intervenção", "Index", "LocalInteresse", new { id = Model.id_utlizador }, null) </li>
             <li class="list-group-item">@Html.ActionLink("Gestão de Voluntários", "Index", "Utilizadores", new { id = Model.id_utlizador }, null)</li>
+            <li class="list-group-item">@Html.ActionLink("Importar ficheiro de Sincronização com Servidor Remoto", "Importar", "Sincronizacao", new { id = Model.id_utlizador }, null)</li>
             <li class="list-group-item">@Html.ActionLink("Logout", "Index")</li>
         </ul>
         <ul class="pager"></ul>

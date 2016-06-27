@@ -182,11 +182,13 @@
     <Compile Include="Controllers\LocalIntervencaoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RefugiadoController.cs" />
+    <Compile Include="Controllers\SincronizacaoController.cs" />
     <Compile Include="Controllers\UtilizadoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CSV.cs" />
     <Compile Include="Models\Estatistica.cs">
       <DependentUpon>li4_BD_Context.tt</DependentUpon>
     </Compile>
@@ -369,6 +371,9 @@
     <Content Include="Views\Estatistica\Eliminar.cshtml" />
     <Content Include="Views\GestaoEstatisticas\Index.cshtml" />
     <Content Include="Views\LocalIntervencao\Index.cshtml" />
+    <Content Include="Views\Sincronizacao\Index.cshtml" />
+    <Content Include="Views\Sincronizacao\Importar.cshtml" />
+    <Content Include="Views\Sincronizacao\Mensagem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
